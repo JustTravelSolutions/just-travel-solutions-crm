@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Trips - Just Travel Solutions CRM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="icon" type="image/png" href="../images/logo-transparent.png">
+    <style>
+        .trips-container {
+            padding: 25px;
+        }
+        .trip-filters {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .trip-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .trip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .trip-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .trip-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .status-upcoming {
+            background-color: #e6f7ee;
+            color: #28a745;
+        }
+        .status-completed {
+            background-color: #e6f0ff;
+            color: #0d6efd;
+        }
+        .status-cancelled {
+            background-color: #f8d7da;
+            color: #dc3545;
+        }
+        .trip-details {
+            padding: 20px;
+        }
+        .trip-title {
+            font-weight: 600;
+            color: #1a3b5d;
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+        }
+        .trip-date {
+            color: #6c757d;
+            margin: 0 0 15px 0;
+            font-size: 0.9rem;
+        }
+        .trip-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .trip-info-item {
+            display: flex;
+            flex-direction: column;
+            min-width: 120px;
+        }
+        .trip-info-label {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+        .trip-info-value {
+            font-weight: 500;
+            color: #1a3b5d;
+        }
+        .trip-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .trip-detail-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+        .trip-detail-header {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+        }
+        .trip-detail-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+        }
+        .trip-detail-header-content {
+            position: relative;
+            padding: 30px;
+            color: white;
+            width: 100%;
+        }
+        .trip-detail-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+        }
+        .trip-detail-date {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+        .trip-detail-status {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .trip-detail-body {
+            padding: 30px;
+        }
+        .trip-detail-section {
+            margin-bottom: 30px;
+        }
+        .trip-detail-section:last-child {
+            margin-bottom: 0;
+        }
+        .trip-detail-section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a3b5d;
+            margin: 0 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .trip-detail-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .trip-detail-info-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .trip-detail-info-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+        .trip-detail-info-value {
+            font-weight: 500;
+            color: #1a3b5d;
+        }
+        .itinerary-day {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .itinerary-day:last-child {
+            margin-bottom: 0;
+        }
+        .itinerary-day-number {
+            width: 50px;
+            height: 50px;
+            background-color: #1a3b5d;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        .itinerary-day-content {
+            flex: 1;
+        }
+        .itinerary-day-title {
+            font-weight: 600;
+            color: #1a3b5d;
+            margin: 0 0 10px 0;
+        }
+        .itinerary-day-description {
+            color: #6c757d;
+            margin: 0;
+        }
+        .payment-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .payment-item:last-child {
+            border-bottom: none;
+        }
+        .payment-item-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .payment-item-title {
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0 0 5px 0;
+        }
+        .payment-item-date {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin: 0;
+        }
+        .payment-item-amount {
+            font-weight: 600;
+            color: #1a3b5d;
+        }
+        .document-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .document-item:last-child {
+            border-bottom: none;
+        }
+        .document-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        .document-icon i {
+            font-size: 1.2rem;
+            color: #1a3b5d;
+        }
+        .document-details {
+            flex: 1;
+        }
+        .document-title {
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0 0 5px 0;
+        }
+        .document-date {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin: 0;
+        }
+        .document-actions {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="../images/logo-white.png" alt="Just Travel Solutions CRM Logo" class="sidebar-logo">
+                <button id="sidebar-toggle" class="sidebar-toggle d-md-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item">
+                    <a href="client-portal.html">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item active">
+                    <a href="client-trips.html">
+                        <i class="fas fa-plane"></i>
+                        <span>My Trips</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="client-invoices.html">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>Invoices</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="client-documents.html">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Documents</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="client-profile.html">
+                        <i class="fas fa-user"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="client-preferences.html">
+                        <i class="fas fa-cog"></i>
+                        <span>Preferences</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="../index.html">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Topbar -->
+            <div class="topbar">
+                <div class="toggle-sidebar-btn d-md-none">
+                    <button id="toggle-sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search trips...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="topbar-right">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">2</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="../images/user-avatar/client-avatar.jpg" alt="User Avatar" class="avatar">
+                        <span class="user-name">John & Sarah Smith <i class="fas fa-chevron-down"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trips List Content -->
+            <div class="trips-container">
+                <h2 class="page-title">My Trips</h2>
+                <p class="page-subtitle">View and manage all your travel bookings</p>
+
+                <div class="trip-filters">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="status-filter">Status</label>
+                                <select class="form-select" id="status-filter">
+                                    <option value="all">All Statuses</option>
+                                    <option value="upcoming">Upcoming</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="date-filter">Date Range</label>
+                                <select class="form-select" id="date-filter">
+                                    <option value="all">All Time</option>
+                                    <option value="upcoming">Upcoming</option>
+                                    <option value="past">Past</option>
+                                    <option value="this-year">This Year</option>
+                                    <option value="last-year">Last Year</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="type-filter">Trip Type</label>
+                                <select class="form-select" id="type-filter">
+                                    <option value="all">All Types</option>
+                                    <option value="cruise">Cruise</option>
+                                    <option value="tour">Tour</option>
+                                    <option value="resort">Resort</option>
+                                    <option value="flight">Flight</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <button class="btn btn-primary w-100">Apply Filters</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row trips-list">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="trip-card">
+                            <div class="trip-image" style="background-image: url('../images/destinations/caribbean.jpg');">
+                                <span class="trip-status status-upcoming">Upcoming</span>
+                            </div>
+                            <div class="trip-details">
+                                <h4 class="trip-title">Caribbean Cruise</h4>
+                                <p class="trip-date">May 15 - May 22, 2025</p>
+                                <div class="trip-info">
+                                    <div class="trip-info-item">
+                                        <span class="trip-info-label">Travelers</span>
+                                        <span class="trip-info-value">2 Adults</span>
+                                    </div>
+                                    <div class="trip-info-item">
+                                        <span class="trip-info-label">Booking ID</span>
+                                        <span class="trip-info-value">BK-2025-1042</span>
+                                    </div>
+                                    <div class="trip-info-item">
+                                        <span class="trip-info-label">Status</span>
+                                        <span class="trip-info-value">Confirmed</span>
+                                    </div>
+                                </div>
+                                <div class="trip-actions">
+                                    <a href="#" class="btn btn-primary view-trip-btn" data-trip="caribbean">View Details</a>
+                                    <a href="#" class="btn btn-outline-secondary">View Itinerary</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4">
+                        <div class="trip-card">
+                            <div class="trip-image" style="background-image: url('../images/destinations/europe.jpg');">
+                                <span class="trip-status status-completed">Completed</span>
+                            </div>
+                            <div class="trip-details">
+                                <h4 class="trip-title">European Tour</h4>
+                                <p class="trip-date">September 10 - September 24, 2024</p>
+                                <div class="trip-info">
+                                    <div class="trip-info-item">
+                                        <span class="trip-info-label">Travelers</span>
+                                        <span class="trip-info-value">2 Adults</span>
+                                    </div>
+                                    <div class="trip-info-item">
+                                        <span class="trip-info-label">Booking ID</span>
+                                        <span class="trip-info-value">BK-2024-0987</span>
+                                    </div>
+                                    <div class="trip-info-item">
+                                        <span class="trip-info-label">Status</span>
+                                        <span class="trip-info-value">Completed</span>
+                                    </div>
+                                </div>
+                                <div class="trip-actions">
+                                    <a href="#" class="btn btn-primary view-trip-btn" data-trip="europe">View Details</a>
+                                    <a href="#" class="btn btn-outline-secondary">View Photos</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4">
+                        <div class="trip-card">
+                            <div class="trip-image" style="background-image: url('../images/destinations/hawaii.jpg');">
+                                <span class="trip-status status-completed">Completed</span>
+                            </div>
+                            <div class="trip-details">
+                                <h4 class="trip-title">Hawaiian Vacation</h4>
+                                <p class="trip-date">June 5 - June 15, 2024</p>
+                                <div class="trip-info">
+                                    <div class="trip-info-item">
+                                        <span class="trip-info-label">Travelers</span>
+                                        <span class="trip-info-value">2 Adults</span>
+                                    </div>
+                                    <div class="trip-info-item">
+                                        <span class="trip-info-label">Booking ID</span>
+                                        <span class="trip-info-value">BK-2024-0756</span>
+                                    </div>
+                                    <div class="trip-info-item">
+                                        <span class="trip-info-label">Status</span>
+                                        <span class="trip-info-value">Completed</span>
+                                    </div>
+                                </div>
+                                <div class="trip-actions">
+                                    <a href="#" class="btn btn-primary view-trip-btn" data-trip="hawaii">View Details</a>
+                                    <a href="#" class="btn btn-outline-secondary">View Photos</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trip Detail View (Hidden by default) -->
+                <div class="trip-detail-view" style="display: none;">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3>Trip Details</h3>
+                        <button class="btn btn-outline-secondary back-to-list-btn">
+                            <i class="fas fa-arrow-left me-2"></i> Back to List
+                        </button>
+                    </div>
+                    
+                    <div class="trip-detail-container">
+                        <div class="trip-detail-header" style="background-image: url('../images/destinations/caribbean.jpg');">
+                            <div class="trip-detail-header-overlay"></div>
+                            <div class="trip-detail-header-content">
+                                <h2 class="trip-detail-title">Caribbean Cruise</h2>
+                                <p class="trip-detail-date">May 15 - May 22, 2025 (7 nights)</p>
+                                <span class="trip-detail-status status-upcoming">Upcoming</span>
+                            </div>
+                        </div>
+                        
+                        <div class="trip-detail-body">
+                            <div class="trip-detail-section">
+                                <h3 class="trip-detail-section-title">Trip Information</h3>
+                                <div class="trip-detail-info">
+                                    <div class="trip-detail-info-item">
+                                        <span class="trip-detail-info-label">Booking Reference</span>
+                                        <span class="trip-detail-info-value">BK-2025-1042</span>
+                                    </div>
+                                    <div class="trip-detail-info-item">
+                                        <span class="trip-detail-info-label">Booking Date</span>
+                                        <span class="trip-detail-info-value">March 15, 2025</span>
+                                    </div>
+                                    <div class="trip-detail-info-item">
+                                        <span class="trip-detail-info-label">Status</span>
+                                        <span class="trip-detail-info-value">Confirmed</span>
+                                    </div>
+                                    <div class="trip-detail-info-item">
+                                        <span class="trip-detail-info-label">Travelers</span>
+                                        <span class="trip-detail-info-value">2 Adults</span>
+                                    </div>
+                                    <div class="trip-detail-info-item">
+                                        <span class="trip-detail-info-label">Cruise Line</span>
+                                        <span class="trip-detail-info-value">Royal Caribbean</span>
+                                    </div>
+                                    <div class="trip-detail-info-item">
+                                        <span class="trip-detail-info-label">Ship</span>
+                                        <span class="trip-detail-info-value">Wonder of the Seas</span>
+                                    </div>
+                                    <div class="trip-detail-info-item">
+                                        <span class="trip-detail-info-label">Cabin Type</span>
+                                        <span class="trip-detail-info-value">Balcony Stateroom</span>
+                                    </div>
+                                    <div class="trip-detail-info-item">
+                                        <span class="trip-detail-info-label">Departure Port</span>
+                                        <span class="trip-detail-info-value">Miami, FL</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="trip-detail-section">
+                                <h3 class="trip-detail-section-title">Itinerary</h3>
+                                <div class="itinerary-day">
+                                    <div class="itinerary-day-number">1</div>
+                                    <div class="itinerary-day-content">
+                                        <h4 class="itinerary-day-title">Miami, Florida - Departure</h4>
+                                        <p class="itinerary-day-description">Board the Wonder of the Seas in Miami. Ship departs at 4:30 PM. Enjoy dinner and evening entertainment onboard.</p>
+                                    </div>
+                                </div>
+                                <div class="itinerary-day">
+                                    <div class="itinerary-day-number">2</div>
+                                    <div class="itinerary-day-content">
+                                        <h4 class="itinerary-day-title">At Sea</h4>
+                                        <p class="itinerary-day-description">Full day at sea. Enjoy the ship's amenities including pools, spa, fitness center, and various entertainment options.</p>
+                                    </div>
+                                </div>
+                                <div class="itinerary-day">
+                                    <div class="itinerary-day-number">3</div>
+                                    <div class="itinerary-day-content">
+                                        <h4 class="itinerary-day-title">Cozumel, Mexico</h4>
+                                        <p class="itinerary-day-description">Arrive at Cozumel at 8:00 AM. Explore the beautiful beaches, snorkeling spots, and local culture. Ship departs at 6:00 PM.</p>
+                                    </div>
+                                </div>
+                                <div class="itinerary-day">
+                                    <div class="itinerary-day-number">4</div>
+                                    <div class="itinerary-day-content">
+                                        <h4 class="itinerary-day-title">Roatan, Honduras</h4>
+                                        <p class="itinerary-day-description">Arrive at Roatan at 8:00 AM. Enjoy the pristine beaches and coral reefs. Ship departs at 5:00 PM.</p>
+                                    </div>
+                                </div>
+                                <div class="itinerary-day">
+                                    <div class="itinerary-day-number">5</div>
+                                    <div class="itinerary-day-content">
+                                        <h4 class="itinerary-day-title">Costa Maya, Mexico</h4>
+                                        <p class="itinerary-day-description">Arrive at Costa Maya at 7:00 AM. Explore ancient Mayan ruins and beautiful beaches. Ship departs at 5:00 PM.</p>
+                                    </div>
+                                </div>
+                                <div class="itinerary-day">
+                                    <div class="itinerary-day-number">6</div>
+                                    <div class="itinerary-day-content">
+                                        <h4 class="itinerary-day-title">At Sea</h4>
+                                        <p class="itinerary-day-description">Full day at sea. Enjoy the ship's amenities and activities.</p>
+                                    </div>
+                                </div>
+                                <div class="itinerary-day">
+                                    <div class="itinerary-day-number">7</div>
+                                    <div class="itinerary-day-content">
+                                        <h4 class="itinerary-day-title">Perfect Day at CocoCay</h4>
+                                        <p class="itinerary-day-description">Arrive at Royal Caribbean's private island at 7:00 AM. Enjoy water park, beaches, and various activities. Ship departs at 5:00 PM.</p>
+                                    </div>
+                                </div>
+                                <div class="itinerary-day">
+                                    <div class="itinerary-day-number">8</div>
+                                    <div class="itinerary-day-content">
+                                        <h4 class="itinerary-day-title">Miami, Florida - Return</h4>
+                                        <p class="itinerary-day-description">Arrive back in Miami at 6:00 AM. Disembarkation begins around 8:00 AM.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="trip-detail-section">
+                                <h3 class="trip-detail-section-title">Payments</h3>
+                                <div class="payment-item">
+                                    <div class="payment-item-details">
+                                        <h5 class="payment-item-title">Deposit</h5>
+                                        <p class="payment-item-date">Paid on March 20, 2025</p>
+                                    </div>
+                                    <span class="payment-item-amount">$1,000.00</span>
+                                </div>
+                                <div class="payment-item">
+                                    <div class="payment-item-details">
+                                        <h5 class="payment-item-title">Final Payment</h5>
+                                        <p class="payment-item-date">Due by April 15, 2025</p>
+                                    </div>
+                                    <span class="payment-item-amount">$2,900.00</span>
+                                </div>
+                                <div class="d-flex justify-content-end mt-3">
+                                    <a href="client-invoices.html" class="btn btn-primary">View Invoices</a>
+                                </div>
+                            </div>
+                            
+                            <div class="trip-detail-section">
+                                <h3 class="trip-detail-section-title">Documents</h3>
+                                <div class="document-item">
+                                    <div class="document-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="document-details">
+                                        <h5 class="document-title">Cruise Itinerary</h5>
+                                        <p class="document-date">Updated: April 5, 2025</p>
+                                    </div>
+                                    <div class="document-actions">
+                                        <a href="#" class="btn btn-sm btn-outline-secondary"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <div class="document-item">
+                                    <div class="document-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="document-details">
+                                        <h5 class="document-title">Travel Insurance Policy</h5>
+                                        <p class="document-date">Issued: April 2, 2025</p>
+                                    </div>
+                                    <div class="document-actions">
+                                        <a href="#" class="btn btn-sm btn-outline-secondary"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <div class="document-item">
+                                    <div class="document-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="document-details">
+                                        <h5 class="document-title">Shore Excursions Guide</h5>
+                                        <p class="document-date">Updated: April 10, 2025</p>
+                                    </div>
+                                    <div class="document-actions">
+                                        <a href="#" class="btn btn-sm btn-outline-secondary"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <div class="document-item">
+                                    <div class="document-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="document-details">
+                                        <h5 class="document-title">Cruise Boarding Pass</h5>
+                                        <p class="document-date">Available 30 days before departure</p>
+                                    </div>
+                                    <div class="document-actions">
+                                        <a href="#" class="btn btn-sm btn-outline-secondary disabled"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle sidebar on mobile
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const toggleSidebar = document.getElementById('toggle-sidebar');
+            const sidebar = document.getElementById('sidebar');
+            
+            if (sidebarToggle && sidebar) {
+                sidebarToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('collapsed');
+                });
+            }
+            
+            if (toggleSidebar && sidebar) {
+                toggleSidebar.addEventListener('click', function() {
+                    sidebar.classList.toggle('active');
+                });
+            }
+            
+            // View Trip Detail
+            const viewTripButtons = document.querySelectorAll('.view-trip-btn');
+            const tripsList = document.querySelector('.trips-list');
+            const tripDetailView = document.querySelector('.trip-detail-view');
+            const backToListBtn = document.querySelector('.back-to-list-btn');
+            const tripFilters = document.querySelector('.trip-filters');
+            const pageTitle = document.querySelector('.page-title');
+            const pageSubtitle = document.querySelector('.page-subtitle');
+            
+            viewTripButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tripId = this.getAttribute('data-trip');
+                    
+                    // In a real app, you would fetch the trip details based on the ID
+                    // For demo purposes, we'll just show the static trip detail view
+                    
+                    // Hide trips list
+                    tripsList.style.display = 'none';
+                    tripFilters.style.display = 'none';
+                    pageTitle.style.display = 'none';
+                    pageSubtitle.style.display = 'none';
+                    
+                    // Show trip detail view
+                    tripDetailView.style.display = 'block';
+                    
+                    // Update trip details based on which trip was clicked
+                    if (tripId !== 'caribbean') {
+                        const tripDetailHeader = document.querySelector('.trip-detail-header');
+                        const tripDetailTitle = document.querySelector('.trip-detail-title');
+                        const tripDetailDate = document.querySelector('.trip-detail-date');
+                        const tripDetailStatus = document.querySelector('.trip-detail-status');
+                        
+                        if (tripId === 'europe') {
+                            tripDetailHeader.style.backgroundImage = "url('../images/destinations/europe.jpg')";
+                            tripDetailTitle.textContent = "European Tour";
+                            tripDetailDate.textContent = "September 10 - September 24, 2024 (14 nights)";
+                            tripDetailStatus.className = "trip-detail-status status-completed";
+                            tripDetailStatus.textContent = "Completed";
+                        } else if (tripId === 'hawaii') {
+                            tripDetailHeader.style.backgroundImage = "url('../images/destinations/hawaii.jpg')";
+                            tripDetailTitle.textContent = "Hawaiian Vacation";
+                            tripDetailDate.textContent = "June 5 - June 15, 2024 (10 nights)";
+                            tripDetailStatus.className = "trip-detail-status status-completed";
+                            tripDetailStatus.textContent = "Completed";
+                        }
+                    }
+                });
+            });
+            
+            if (backToListBtn) {
+                backToListBtn.addEventListener('click', function() {
+                    // Hide trip detail view
+                    tripDetailView.style.display = 'none';
+                    
+                    // Show trips list
+                    tripsList.style.display = 'flex';
+                    tripFilters.style.display = 'block';
+                    pageTitle.style.display = 'block';
+                    pageSubtitle.style.display = 'block';
+                });
+            }
+            
+            // Add interactivity to buttons
+            document.querySelectorAll('.btn').forEach(button => {
+                if (!button.classList.contains('view-trip-btn') && !button.classList.contains('back-to-list-btn')) {
+                    button.addEventListener('click', function(e) {
+                        if (!this.classList.contains('disabled')) {
+                            e.preventDefault();
+                            const actionName = this.textContent.trim();
+                            
+                            // Create toast notification
+                            const toastContainer = document.createElement('div');
+                            toastContainer.className = 'position-fixed bottom-0 end-0 p-3';
+                            toastContainer.style.zIndex = '1050';
+                            
+                            toastContainer.innerHTML = `
+                                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                                    <div class="toast-header">
+                                        <strong class="me-auto">Just Travel Solutions</strong>
+                                        <small>Just now</small>
+                                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                    </div>
+                                    <div class="toast-body">
+                                        ${actionName} action triggered successfully!
+                                    </div>
+                                </div>
+                            `;
+                            
+                            document.body.appendChild(toastContainer);
+                            
+                            const toastElement = toastContainer.querySelector('.toast');
+                            const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
+                            toast.show();
+                            
+                            // Remove toast container after it's hidden
+                            toastElement.addEventListener('hidden.bs.toast', function() {
+                                toastContainer.remove();
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

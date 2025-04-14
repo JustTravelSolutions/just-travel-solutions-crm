@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itinerary Builder - Just Travel Solutions CRM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../images/logo.png" alt="Just Travel Solutions Logo" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="features.html">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pricing.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white ms-3" href="demo.html">Request Demo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="feature-hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1>Create Stunning Travel Itineraries</h1>
+                    <p class="lead">Impress your clients with professional, interactive travel proposals that showcase your expertise and increase bookings.</p>
+                    <div class="hero-buttons">
+                        <a href="demo.html" class="btn btn-primary btn-lg">Request Demo</a>
+                        <a href="pricing.html" class="btn btn-outline-primary btn-lg">View Pricing</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="../images/itinerary-builder.png" alt="Itinerary Builder Interface" class="img-fluid hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="key-features-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Powerful Itinerary Building Tools</h2>
+                <p>Everything you need to create professional travel proposals</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h3>Drag-and-Drop Editor</h3>
+                        <p>Create beautiful itineraries with our intuitive drag-and-drop interface. No design skills required.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cloud-download-alt"></i>
+                        </div>
+                        <h3>Content Import</h3>
+                        <p>Import content directly from airlines, cruises, hotels, and tour operators with just a few clicks.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h3>Smart Content Library</h3>
+                        <p>Save and organize content with our tagging system for quick access and reuse in future itineraries.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile-Friendly Design</h3>
+                        <p>Itineraries look great on any device, giving your clients access to their travel plans anywhere.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3>Easy Sharing</h3>
+                        <p>Share itineraries via email, link, PDF, or even print them for in-person presentations.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Engagement Tracking</h3>
+                        <p>See when clients view your itineraries and which sections they spend the most time on.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drag-and-Drop Editor Section -->
+    <section class="feature-detail-section bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="../images/drag-drop-editor.png" alt="Drag and Drop Editor" class="img-fluid feature-image">
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-header">
+                        <h2>Intuitive Drag-and-Drop Editor</h2>
+                        <p>Create professional itineraries in minutes</p>
+                    </div>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>Visual Editor:</strong> Build itineraries visually with no coding required</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Pre-designed Blocks:</strong> Choose from dozens of content blocks for flights, hotels, activities, and more</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Custom Templates:</strong> Start with professionally designed templates or create your own</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Day-by-Day Planning:</strong> Organize travel plans by day with visual timeline</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Rich Media Support:</strong> Add photos, videos, maps, and interactive elements</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Branding Options:</strong> Customize with your agency's logo, colors, and fonts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Import Section -->
+    <section class="feature-detail-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="section-header">
+                        <h2>Powerful Content Import</h2>
+                        <p>Save time by importing content directly from suppliers</p>
+                    </div>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>Airline Import:</strong> Import flight details including schedules, aircraft, and amenities</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Cruise Line Import:</strong> Import cruise itineraries, ship details, and cabin information</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Tour Operator Import:</strong> Import tour packages with day-by-day breakdowns</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Hotel Import:</strong> Import hotel descriptions, room types, and amenities</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>URL Pasting:</strong> Import content by simply pasting a supplier website URL</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Image Import:</strong> Automatically import high-quality images from suppliers</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <img src="../images/content-import.png" alt="Content Import" class="img-fluid feature-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Library Section -->
+    <section class="feature-detail-section bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="../images/content-library.png" alt="Content Library" class="img-fluid feature-image">
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-header">
+                        <h2>Smart Content Library</h2>
+                        <p>Build a reusable library of your best content</p>
+                    </div>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>Tagging System:</strong> Organize content with customizable tags for easy retrieval</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Smart Suggestions:</strong> Automatic tag suggestions based on content</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Advanced Search:</strong> Find content quickly with powerful search capabilities</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Content Categories:</strong> Organize by supplier type, destination, or custom categories</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Usage Tracking:</strong> See which content is used most frequently</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Content Updates:</strong> Update saved items once to reflect changes across all itineraries</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Experience Section -->
+    <section class="feature-detail-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="section-header">
+                        <h2>Interactive Client Experience</h2>
+                        <p>Engage your clients with interactive itineraries</p>
+                    </div>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>Interactive Maps:</strong> Show the full journey with interactive maps</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Day-by-Day Navigation:</strong> Clients can easily navigate through their travel days</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Weather Forecasts:</strong> Integrated weather information for travel dates</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Booking Confirmation:</strong> Allow clients to confirm bookings directly from the itinerary</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Client Notes:</strong> Enable clients to add their own notes to the itinerary</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Mobile App Access:</strong> Optional companion app for clients to access itineraries offline</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <img src="../images/client-experience.png" alt="Client Experience" class="img-fluid feature-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Itinerary Preview Section -->
+    <section class="itinerary-preview-section bg-light">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>See It In Action</h2>
+                <p>Preview of a professional travel itinerary created with our builder</p>
+            </div>
+            <div class="itinerary-preview">
+                <div class="itinerary-header">
+                    <h3>Luxury Italian Getaway</h3>
+                    <p>10 Days in Rome, Florence, and the Amalfi Coast</p>
+                </div>
+                <div class="itinerary-timeline">
+                    <div class="timeline-day active" data-day="1">Day 1</div>
+                    <div class="timeline-day" data-day="2">Day 2</div>
+                    <div class="timeline-day" data-day="3">Day 3</div>
+                    <div class="timeline-day" data-day="4">Day 4</div>
+                    <div class="timeline-day" data-day="5">Day 5</div>
+                    <div class="timeline-connector">...</div>
+                    <div class="timeline-day" data-day="10">Day 10</div>
+                </div>
+                <div class="itinerary-content">
+                    <div class="itinerary-day" id="day1">
+                        <div class="day-header">
+                            <h4>Day 1: Welcome to Rome</h4>
+                            <p class="day-date">June 15, 2025</p>
+                        </div>
+                        <div class="day-item flight">
+                            <div class="item-time">08:30 AM - 10:45 AM</div>
+                            <div class="item-content">
+                                <h5>Flight to Rome</h5>
+                                <div class="flight-details">
+                                    <div class="flight-info">
+                                        <span class="airline">Delta Airlines</span>
+                                        <span class="flight-number">DL 246</span>
+                                    </div>
+                                    <div class="flight-route">
+                                        <span class="departure">JFK</span>
+                                        <span class="flight-icon"><i class="fas fa-plane"></i></span>
+                                        <span class="arrival">FCO</span>
+                                    </div>
+                                </div>
+                                <p>Business Class | Boeing 787 Dreamliner</p>
+                            </div>
+                        </div>
+                        <div class="day-item transfer">
+                            <div class="item-time">11:30 AM - 12:30 PM</div>
+                            <div class="item-content">
+                                <h5>Private Transfer to Hotel</h5>
+                                <p>Your driver will meet you at the arrivals hall holding a sign with your name.</p>
+                            </div>
+                        </div>
+                        <div class="day-item accommodation">
+                            <div class="item-time">From 3:00 PM</div>
+                            <div class="item-content">
+                                <h5>Hotel de Russie</h5>
+                                <div class="accommodation-details">
+                                    <p>Deluxe Room with Garden View | 5 Nights</p>
+                                    <p>Via del Babuino, 9, 00187 Roma RM, Italy</p>
+                                </div>
+                                <div class="accommodation-amenities">
+                                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                                    <span class="amenity"><i class="fas fa-swimming-pool"></i> Pool</span>
+                                    <span class="amenity"><i class="fas fa-spa"></i> Spa</span>
+                                    <span class="amenity"><i class="fas fa-utensils"></i> Restaurant</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="day-item activity">
+                            <div class="item-time">7:00 PM - 9:00 PM</div>
+                            <div class="item-content">
+                                <h5>Welcome Dinner at La Pergola</h5>
+                                <p>Enjoy a 3-Michelin star dining experience with panoramic views of Rome.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="itinerary-actions">
+                    <button class="btn btn-outline-primary"><i class="fas fa-download"></i> Download PDF</button>
+                    <button class="btn btn-outline-primary"><i class="fas fa-share-alt"></i> Share</button>
+                    <button class="btn btn-primary"><i class="fas fa-check"></i> Approve Itinerary</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Import Demo Section -->
+    <section class="import-demo-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>See How Easy Content Import Is</h2>
+                <p>Watch how quickly you can import content from suppliers</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <img src="../images/import-demo-thumbnail.png" alt="Import Demo Video" class="img-fluid">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="import-steps">
+                        <div class="row mt-5">
+                            <div class="col-md-4">
+                                <div class="import-step">
+                                    <div class="step-number">1</div>
+                                    <h4>Paste URL or Upload</h4>
+                                    <p>Simply paste a supplier URL or upload content files</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="import-step">
+                                    <div class="step-number">2</div>
+                                    <h4>Review & Edit</h4>
+                                    <p>Review imported content and make any necessary edits</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="import-step">
+                                    <div class="step-number">3</div>
+                                    <h4>Save & Tag</h4>
+                                    <p>Save to your library with tags for future use</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section bg-light">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>What Our Customers Say</h2>
+                <p>Travel agencies love our itinerary builder</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"The itinerary builder has completely transformed how we present travel plans to our clients. Our conversion rate has increased by 35% since we started using it."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="../images/testimonial-4.jpg" alt="Testimonial Author" class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4>David Wilson</h4>
+                                <p>Luxury Travel Advisor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"The content import feature saves us hours of work every day. Being able to import directly from suppliers and save to our library is a game-changer."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="../images/testimonial-5.jpg" alt="Testimonial Author" class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4>Amanda Chen</h4>
+                                <p>Travel Agency Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Our clients love the interactive itineraries. The ability to see their entire journey on a map and navigate day by day has received incredible feedback."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="../images/testimonial-6.jpg" alt="Testimonial Author" class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4>Robert Thompson</h4>
+                                <p>Destination Specialist</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>How We Compare</h2>
+                <p>See how our itinerary builder stacks up against the competition</p>
+            </div>
+            <div class="table-responsive">
+                <table class="table comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Just Travel Solutions</th>
+                            <th>Competitor A</th>
+                            <th>Competitor B</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Drag-and-Drop Editor</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Direct Supplier Import</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-times text-danger"></i></td>
+                        </tr>
+                        <tr>
+                            <td>URL Content Import</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-times text-danger"></i></td>
+                            <td><i class="fas fa-times text-danger"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Smart Tagging System</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-times text-danger"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Interactive Client View</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Engagement Tracking</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-times text-danger"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>CRM Integration</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-times text-danger"></i></td>
+                            <td><i class="fas fa-times text-danger"></i></td>
+                        </tr>
+                        <tr>
+                            <td>White Labeling</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Mobile App for Clients</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-times text-danger"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Booking Confirmation</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-times text-danger"></i></td>
+                            <td><i class="fas fa-times text-danger"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content text-center">
+                <h2>Ready to Create Stunning Travel Itineraries?</h2>
+                <p>Join thousands of travel agencies using Just Travel Solutions to impress clients and boost bookings</p>
+                <div class="cta-buttons">
+                    <a href="demo.html" class="btn btn-primary btn-lg">Request a Demo</a>
+                    <a href="pricing.html" class="btn btn-outline-light btn-lg">View Pricing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="footer-about">
+                        <img src="../images/logo-white.png" alt="Just Travel Solutions Logo" class="footer-logo">
+                        <p>Just Travel Solutions provides the ultimate all-in-one CRM platform designed specifically for travel agencies.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-links">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="features.html">Features</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="demo.html">Request Demo</a></li>
+                            <li><a href="login.html">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-links">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-links">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="help-center.html">Help Center</a></li>
+                            <li><a href="documentation.html">Documentation</a></li>
+                            <li><a href="webinars.html">Webinars</a></li>
+                            <li><a href="partners.html">Partners</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-links">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="terms.html">Terms of Service</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="security.html">Security</a></li>
+                            <li><a href="gdpr.html">GDPR</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2025 Just Travel Solutions. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>1100 Peachtree Street NE, Suite 250 Atlanta, GA 30309 | <a href="mailto:hello@justtravelsolutions.com">hello@justtravelsolutions.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Itinerary Timeline Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineDays = document.querySelectorAll('.timeline-day');
+            
+            timelineDays.forEach(day => {
+                day.addEventListener('click', function() {
+                    // Remove active class from all days
+                    timelineDays.forEach(d => d.classList.remove('active'));
+                    
+                    // Add active class to clicked day
+                    this.classList.add('active');
+                    
+                    // In a real implementation, this would show the corresponding day content
+                    // For this demo, we're just showing Day 1
+                });
+            });
+            
+            // Video placeholder click handler
+            const videoPlaceholder = document.querySelector('.video-placeholder');
+            if (videoPlaceholder) {
+                videoPlaceholder.addEventListener('click', function() {
+                    // In a real implementation, this would play the video
+                    alert('In the full version, this would play a demo video of the import process.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

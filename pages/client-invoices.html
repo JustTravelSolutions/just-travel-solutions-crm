@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Invoices - Just Travel Solutions CRM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="icon" type="image/png" href="../images/logo-transparent.png">
+    <style>
+        .invoice-list-container {
+            padding: 25px;
+        }
+        .invoice-filters {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .invoice-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .invoice-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .invoice-number {
+            font-weight: 600;
+            color: #1a3b5d;
+            margin: 0 0 5px 0;
+        }
+        .invoice-date {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        .invoice-amount {
+            font-weight: 700;
+            color: #1a3b5d;
+            font-size: 1.2rem;
+        }
+        .invoice-status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 15px;
+        }
+        .status-paid {
+            background-color: #e6f7ee;
+            color: #28a745;
+        }
+        .status-pending {
+            background-color: #fff3cd;
+            color: #ffc107;
+        }
+        .status-overdue {
+            background-color: #f8d7da;
+            color: #dc3545;
+        }
+        .invoice-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .invoice-detail-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .invoice-company {
+            display: flex;
+            align-items: center;
+        }
+        .invoice-company img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        .invoice-company-name {
+            font-weight: 700;
+            color: #1a3b5d;
+            margin: 0 0 5px 0;
+        }
+        .invoice-company-details {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        .invoice-info {
+            text-align: right;
+        }
+        .invoice-info-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a3b5d;
+            margin: 0 0 5px 0;
+        }
+        .invoice-info-date {
+            color: #6c757d;
+            margin: 0;
+        }
+        .invoice-parties {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .invoice-party {
+            flex: 1;
+            max-width: 300px;
+        }
+        .invoice-party-title {
+            font-weight: 600;
+            color: #1a3b5d;
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+        }
+        .invoice-party-name {
+            font-weight: 500;
+            margin: 0 0 5px 0;
+        }
+        .invoice-party-details {
+            color: #6c757d;
+            margin: 0 0 5px 0;
+        }
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        .invoice-table th {
+            background-color: #f8f9fa;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #1a3b5d;
+            border-bottom: 2px solid #dee2e6;
+        }
+        .invoice-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .invoice-table tr:last-child td {
+            border-bottom: none;
+        }
+        .invoice-table .text-right {
+            text-align: right;
+        }
+        .invoice-totals {
+            width: 350px;
+            margin-left: auto;
+        }
+        .invoice-total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+        .invoice-total-label {
+            font-weight: 500;
+            color: #6c757d;
+        }
+        .invoice-total-value {
+            font-weight: 500;
+            color: #1a3b5d;
+        }
+        .invoice-grand-total {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a3b5d;
+            border-top: 2px solid #dee2e6;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .invoice-notes {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+        }
+        .invoice-notes-title {
+            font-weight: 600;
+            color: #1a3b5d;
+            margin: 0 0 10px 0;
+        }
+        .invoice-notes-content {
+            color: #6c757d;
+        }
+        .invoice-footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="../images/logo-white.png" alt="Just Travel Solutions CRM Logo" class="sidebar-logo">
+                <button id="sidebar-toggle" class="sidebar-toggle d-md-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item">
+                    <a href="client-portal.html">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="client-trips.html">
+                        <i class="fas fa-plane"></i>
+                        <span>My Trips</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item active">
+                    <a href="client-invoices.html">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>Invoices</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="client-documents.html">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Documents</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="client-profile.html">
+                        <i class="fas fa-user"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="client-preferences.html">
+                        <i class="fas fa-cog"></i>
+                        <span>Preferences</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="../index.html">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Topbar -->
+            <div class="topbar">
+                <div class="toggle-sidebar-btn d-md-none">
+                    <button id="toggle-sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search invoices...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="topbar-right">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">2</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="../images/user-avatar/client-avatar.jpg" alt="User Avatar" class="avatar">
+                        <span class="user-name">John & Sarah Smith <i class="fas fa-chevron-down"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoice List Content -->
+            <div class="invoice-list-container">
+                <h2 class="page-title">My Invoices</h2>
+                <p class="page-subtitle">View and manage all your travel invoices</p>
+
+                <div class="invoice-filters">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="status-filter">Status</label>
+                                <select class="form-select" id="status-filter">
+                                    <option value="all">All Statuses</option>
+                                    <option value="paid">Paid</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="overdue">Overdue</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="date-filter">Date Range</label>
+                                <select class="form-select" id="date-filter">
+                                    <option value="all">All Time</option>
+                                    <option value="this-month">This Month</option>
+                                    <option value="last-month">Last Month</option>
+                                    <option value="this-year">This Year</option>
+                                    <option value="last-year">Last Year</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="trip-filter">Trip</label>
+                                <select class="form-select" id="trip-filter">
+                                    <option value="all">All Trips</option>
+                                    <option value="caribbean">Caribbean Cruise</option>
+                                    <option value="europe">European Tour</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <button class="btn btn-primary w-100">Apply Filters</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="invoice-card">
+                    <div class="invoice-details">
+                        <h5 class="invoice-number">Invoice #INV-2025-0042</h5>
+                        <p class="invoice-date">Issued: April 1, 2025 | Due: April 15, 2025</p>
+                        <p class="mb-0">Caribbean Cruise - Final Payment</p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="invoice-status status-pending">Due in 7 days</span>
+                        <span class="invoice-amount">$2,900.00</span>
+                    </div>
+                    <div class="invoice-actions">
+                        <a href="#" class="btn btn-sm btn-primary">Pay Now</a>
+                        <a href="#" class="btn btn-sm btn-outline-secondary view-invoice-btn" data-invoice="INV-2025-0042">View</a>
+                    </div>
+                </div>
+
+                <div class="invoice-card">
+                    <div class="invoice-details">
+                        <h5 class="invoice-number">Invoice #INV-2025-0041</h5>
+                        <p class="invoice-date">Issued: March 15, 2025 | Paid: March 20, 2025</p>
+                        <p class="mb-0">Caribbean Cruise - Deposit</p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="invoice-status status-paid">Paid</span>
+                        <span class="invoice-amount">$1,000.00</span>
+                    </div>
+                    <div class="invoice-actions">
+                        <a href="#" class="btn btn-sm btn-outline-secondary view-invoice-btn" data-invoice="INV-2025-0041">View</a>
+                        <a href="#" class="btn btn-sm btn-outline-secondary">Download</a>
+                    </div>
+                </div>
+
+                <div class="invoice-card">
+                    <div class="invoice-details">
+                        <h5 class="invoice-number">Invoice #INV-2024-0098</h5>
+                        <p class="invoice-date">Issued: August 15, 2024 | Paid: August 20, 2024</p>
+                        <p class="mb-0">European Tour - Final Payment</p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="invoice-status status-paid">Paid</span>
+                        <span class="invoice-amount">$3,500.00</span>
+                    </div>
+                    <div class="invoice-actions">
+                        <a href="#" class="btn btn-sm btn-outline-secondary view-invoice-btn" data-invoice="INV-2024-0098">View</a>
+                        <a href="#" class="btn btn-sm btn-outline-secondary">Download</a>
+                    </div>
+                </div>
+
+                <div class="invoice-card">
+                    <div class="invoice-details">
+                        <h5 class="invoice-number">Invoice #INV-2024-0075</h5>
+                        <p class="invoice-date">Issued: July 1, 2024 | Paid: July 5, 2024</p>
+                        <p class="mb-0">European Tour - Deposit</p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="invoice-status status-paid">Paid</span>
+                        <span class="invoice-amount">$1,500.00</span>
+                    </div>
+                    <div class="invoice-actions">
+                        <a href="#" class="btn btn-sm btn-outline-secondary view-invoice-btn" data-invoice="INV-2024-0075">View</a>
+                        <a href="#" class="btn btn-sm btn-outline-secondary">Download</a>
+                    </div>
+                </div>
+
+                <!-- Invoice Detail View (Hidden by default) -->
+                <div class="invoice-detail-view" style="display: none;">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3>Invoice Details</h3>
+                        <button class="btn btn-outline-secondary back-to-list-btn">
+                            <i class="fas fa-arrow-left me-2"></i> Back to List
+                        </button>
+                    </div>
+                    
+                    <div class="invoice-detail-container">
+                        <div class="invoice-header">
+                            <div class="invoice-company">
+                                <img src="../images/logo.png" alt="Just Travel Solutions">
+                                <div>
+                                    <h4 class="invoice-company-name">Just Travel Solutions</h4>
+                                    <p class="invoice-company-details">123 Travel Way, Suite 100<br>Miami, FL 33101<br>United States</p>
+                                </div>
+                            </div>
+                            <div class="invoice-info">
+                                <h3 class="invoice-info-number">Invoice #INV-2025-0042</h3>
+                                <p class="invoice-info-date">Issue Date: April 1, 2025<br>Due Date: April 15, 2025</p>
+                            </div>
+                        </div>
+                        
+                        <div class="invoice-parties">
+                            <div class="invoice-party">
+                                <h5 class="invoice-party-title">Billed To:</h5>
+                                <p class="invoice-party-name">John & Sarah Smith</p>
+                                <p class="invoice-party-details">
+                                    456 Residential Ave<br>
+                                    Orlando, FL 32801<br>
+                                    United States<br>
+                                    john.smith@example.com
+                                </p>
+                            </div>
+                            <div class="invoice-party">
+                                <h5 class="invoice-party-title">Trip Details:</h5>
+                                <p class="invoice-party-name">Caribbean Cruise</p>
+                                <p class="invoice-party-details">
+                                    Booking Reference: BK-2025-1042<br>
+                                    Travel Dates: May 15 - May 22, 2025<br>
+                                    Travelers: 2 Adults
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <table class="invoice-table">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price</th>
+                                    <th class="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Caribbean Cruise - Royal Caribbean - Balcony Cabin</td>
+                                    <td>2</td>
+                                    <td>$1,250.00</td>
+                                    <td class="text-right">$2,500.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Shore Excursion Package</td>
+                                    <td>2</td>
+                                    <td>$150.00</td>
+                                    <td class="text-right">$300.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Premium Beverage Package</td>
+                                    <td>2</td>
+                                    <td>$75.00</td>
+                                    <td class="text-right">$150.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Travel Insurance</td>
+                                    <td>1</td>
+                                    <td>$150.00</td>
+                                    <td class="text-right">$150.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="invoice-totals">
+                            <div class="invoice-total-row">
+                                <span class="invoice-total-label">Subtotal:</span>
+                                <span class="invoice-total-value">$3,100.00</span>
+                            </div>
+                            <div class="invoice-total-row">
+                                <span class="invoice-total-label">Discount:</span>
+                                <span class="invoice-total-value">-$200.00</span>
+                            </div>
+                            <div class="invoice-total-row">
+                                <span class="invoice-total-label">Deposit Paid:</span>
+                                <span class="invoice-total-value">-$1,000.00</span>
+                            </div>
+                            <div class="invoice-total-row invoice-grand-total">
+                                <span class="invoice-total-label">Balance Due:</span>
+                                <span class="invoice-total-value">$2,900.00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="invoice-notes">
+                            <h5 class="invoice-notes-title">Notes:</h5>
+                            <p class="invoice-notes-content">
+                                Thank you for booking with Just Travel Solutions. This is the final payment for your Caribbean Cruise. Payment is due by April 15, 2025. Please contact your travel advisor with any questions.
+                            </p>
+                        </div>
+                        
+                        <div class="invoice-footer">
+                            <p>Just Travel Solutions | www.justtravelsolutions.com | (800) 555-1234</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-end gap-2 mb-4">
+                        <button class="btn btn-outline-secondary">Download PDF</button>
+                        <button class="btn btn-primary">Pay Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle sidebar on mobile
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const toggleSidebar = document.getElementById('toggle-sidebar');
+            const sidebar = document.getElementById('sidebar');
+            
+            if (sidebarToggle && sidebar) {
+                sidebarToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('collapsed');
+                });
+            }
+            
+            if (toggleSidebar && sidebar) {
+                toggleSidebar.addEventListener('click', function() {
+                    sidebar.classList.toggle('active');
+                });
+            }
+            
+            // View Invoice Detail
+            const viewInvoiceButtons = document.querySelectorAll('.view-invoice-btn');
+            const invoiceListContainer = document.querySelector('.invoice-list-container');
+            const invoiceDetailView = document.querySelector('.invoice-detail-view');
+            const backToListBtn = document.querySelector('.back-to-list-btn');
+            
+            viewInvoiceButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const invoiceId = this.getAttribute('data-invoice');
+                    
+                    // In a real app, you would fetch the invoice details based on the ID
+                    // For demo purposes, we'll just show the static invoice detail view
+                    
+                    // Hide invoice list items
+                    const invoiceCards = document.querySelectorAll('.invoice-card');
+                    const invoiceFilters = document.querySelector('.invoice-filters');
+                    const pageTitle = document.querySelector('.page-title');
+                    const pageSubtitle = document.querySelector('.page-subtitle');
+                    
+                    invoiceCards.forEach(card => card.style.display = 'none');
+                    invoiceFilters.style.display = 'none';
+                    pageTitle.style.display = 'none';
+                    pageSubtitle.style.display = 'none';
+                    
+                    // Show invoice detail view
+                    invoiceDetailView.style.display = 'block';
+                    
+                    // Update invoice number in detail view
+                    const invoiceInfoNumber = document.querySelector('.invoice-info-number');
+                    if (invoiceInfoNumber) {
+                        invoiceInfoNumber.textContent = 'Invoice #' + invoiceId;
+                    }
+                });
+            });
+            
+            if (backToListBtn) {
+                backToListBtn.addEventListener('click', function() {
+                    // Hide invoice detail view
+                    invoiceDetailView.style.display = 'none';
+                    
+                    // Show invoice list items
+                    const invoiceCards = document.querySelectorAll('.invoice-card');
+                    const invoiceFilters = document.querySelector('.invoice-filters');
+                    const pageTitle = document.querySelector('.page-title');
+                    const pageSubtitle = document.querySelector('.page-subtitle');
+                    
+                    invoiceCards.forEach(card => card.style.display = 'flex');
+                    invoiceFilters.style.display = 'block';
+                    pageTitle.style.display = 'block';
+                    pageSubtitle.style.display = 'block';
+                });
+            }
+            
+            // Add interactivity to buttons
+            document.querySelectorAll('.btn').forEach(button => {
+                if (!button.classList.contains('view-invoice-btn') && !button.classList.contains('back-to-list-btn')) {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const actionName = this.textContent.trim();
+                        
+                        // Create toast notification
+                        const toastContainer = document.createElement('div');
+                        toastContainer.className = 'position-fixed bottom-0 end-0 p-3';
+                        toastContainer.style.zIndex = '1050';
+                        
+                        toastContainer.innerHTML = `
+                            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="toast-header">
+                                    <strong class="me-auto">Just Travel Solutions</strong>
+                                    <small>Just now</small>
+                                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                </div>
+                                <div class="toast-body">
+                                    ${actionName} action triggered successfully!
+                                </div>
+                            </div>
+                        `;
+                        
+                        document.body.appendChild(toastContainer);
+                        
+                        const toastElement = toastContainer.querySelector('.toast');
+                        const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
+                        toast.show();
+                        
+                        // Remove toast container after it's hidden
+                        toastElement.addEventListener('hidden.bs.toast', function() {
+                            toastContainer.remove();
+                        });
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

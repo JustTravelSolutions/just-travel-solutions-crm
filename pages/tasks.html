@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management - Just Travel Solutions CRM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+        .tasks-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px 0;
+            gap: 20px;
+        }
+        
+        .task-column {
+            min-width: 300px;
+            background-color: #f5f7fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .task-column-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e6ed;
+        }
+        
+        .task-column-title {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .task-column-count {
+            background-color: #e0e6ed;
+            color: #2c3e50;
+            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 14px;
+        }
+        
+        .task-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .task-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .task-card-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1a365d;
+        }
+        
+        .task-card-description {
+            font-size: 14px;
+            color: #4a5568;
+            margin-bottom: 15px;
+        }
+        
+        .task-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .task-card-due {
+            color: #718096;
+        }
+        
+        .task-card-due.overdue {
+            color: #e53e3e;
+            font-weight: 600;
+        }
+        
+        .task-card-priority {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .priority-high {
+            background-color: #fed7d7;
+            color: #c53030;
+        }
+        
+        .priority-medium {
+            background-color: #feebc8;
+            color: #c05621;
+        }
+        
+        .priority-low {
+            background-color: #c6f6d5;
+            color: #2f855a;
+        }
+        
+        .task-card-assignee {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .task-card-assignee img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .task-add-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #edf2f7;
+            border: 2px dashed #cbd5e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .task-add-card:hover {
+            background-color: #e2e8f0;
+        }
+        
+        .task-add-card i {
+            margin-right: 10px;
+            color: #4a5568;
+        }
+        
+        .task-filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .filter-button {
+            background-color: #edf2f7;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .filter-button:hover {
+            background-color: #e2e8f0;
+        }
+        
+        .filter-button.active {
+            background-color: #4299e1;
+            color: white;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: #edf2f7;
+            border-radius: 4px;
+            padding: 8px 15px;
+        }
+        
+        .search-box input {
+            border: none;
+            background: transparent;
+            margin-left: 10px;
+            outline: none;
+        }
+        
+        .task-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .metric-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .metric-title {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 10px;
+        }
+        
+        .metric-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+        
+        .metric-change {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .metric-change.positive {
+            color: #48bb78;
+        }
+        
+        .metric-change.negative {
+            color: #f56565;
+        }
+        
+        .metric-change i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="../images/logo.png" alt="Just Travel Solutions CRM" class="sidebar-logo">
+                <button id="sidebar-toggle" class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="sidebar-menu">
+                <a href="dashboard.html" class="sidebar-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="clients.html" class="sidebar-item">
+                    <i class="fas fa-users"></i>
+                    <span>Clients</span>
+                </a>
+                <a href="bookings.html" class="sidebar-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Bookings</span>
+                </a>
+                <a href="commissions.html" class="sidebar-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>Commissions</span>
+                </a>
+                <a href="itineraries.html" class="sidebar-item">
+                    <i class="fas fa-route"></i>
+                    <span>Itineraries</span>
+                </a>
+                <a href="marketing.html" class="sidebar-item">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>Marketing</span>
+                </a>
+                <a href="pipeline.html" class="sidebar-item">
+                    <i class="fas fa-funnel-dollar"></i>
+                    <span>Pipeline</span>
+                </a>
+                <a href="tasks.html" class="sidebar-item active">
+                    <i class="fas fa-tasks"></i>
+                    <span>Tasks</span>
+                </a>
+                <a href="time-tracker.html" class="sidebar-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Time Tracker</span>
+                </a>
+                <a href="affiliates.html" class="sidebar-item">
+                    <i class="fas fa-handshake"></i>
+                    <span>Affiliates</span>
+                </a>
+                <a href="content-scheduler.html" class="sidebar-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Content Scheduler</span>
+                </a>
+                <a href="groups.html" class="sidebar-item">
+                    <i class="fas fa-users-cog"></i>
+                    <span>Groups</span>
+                </a>
+                <a href="pricing-model.html" class="sidebar-item">
+                    <i class="fas fa-calculator"></i>
+                    <span>Pricing Model</span>
+                </a>
+                <a href="reports.html" class="sidebar-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reports</span>
+                </a>
+                <a href="settings.html" class="sidebar-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Navigation -->
+            <div class="top-nav">
+                <div class="search-container">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-info">
+                        <img src="../images/user-avatar.png" alt="User Avatar" class="user-avatar">
+                        <span>Demo User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page Content -->
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>Task Management</h1>
+                    <div class="page-actions">
+                        <button class="btn btn-primary"><i class="fas fa-plus"></i> New Task</button>
+                        <button class="btn btn-outline"><i class="fas fa-download"></i> Export</button>
+                    </div>
+                </div>
+
+                <!-- Task Metrics -->
+                <div class="task-metrics">
+                    <div class="metric-card">
+                        <div class="metric-title">TOTAL TASKS</div>
+                        <div class="metric-value">42</div>
+                        <div class="metric-change positive">
+                            <i class="fas fa-arrow-up"></i> 8% from last week
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-title">COMPLETED TASKS</div>
+                        <div class="metric-value">18</div>
+                        <div class="metric-change positive">
+                            <i class="fas fa-arrow-up"></i> 12% from last week
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-title">OVERDUE TASKS</div>
+                        <div class="metric-value">5</div>
+                        <div class="metric-change negative">
+                            <i class="fas fa-arrow-up"></i> 2 more than last week
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-title">COMPLETION RATE</div>
+                        <div class="metric-value">78%</div>
+                        <div class="metric-change positive">
+                            <i class="fas fa-arrow-up"></i> 5% from last week
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task Filters -->
+                <div class="task-filters">
+                    <div class="filter-group">
+                        <button class="filter-button active">All Tasks</button>
+                        <button class="filter-button">My Tasks</button>
+                        <button class="filter-button">Team Tasks</button>
+                    </div>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search tasks...">
+                    </div>
+                </div>
+
+                <!-- Task Kanban Board -->
+                <div class="tasks-container">
+                    <!-- To Do Column -->
+                    <div class="task-column">
+                        <div class="task-column-header">
+                            <div class="task-column-title">To Do</div>
+                            <div class="task-column-count">12</div>
+                        </div>
+                        <div class="task-add-card">
+                            <i class="fas fa-plus"></i> Add task
+                        </div>
+                        <div class="task-card">
+                            <div class="task-card-title">Follow up with Caribbean Cruise leads</div>
+                            <div class="task-card-description">Send personalized emails to all leads from the Caribbean Cruise campaign.</div>
+                            <div class="task-card-meta">
+                                <span class="task-card-due">Due Apr 18</span>
+                                <span class="task-card-priority priority-high">High</span>
+                            </div>
+                            <div class="task-card-assignee">
+                                <img src="../images/user-avatar.png" alt="User Avatar">
+                                <span>Sarah Johnson</span>
+                            </div>
+                        </div>
+                        <div class="task-card">
+                            <div class="task-card-title">Create European Tour itinerary</div>
+                            <div class="task-card-description">Design a 14-day European tour itinerary for the Wilson family.</div>
+                            <div class="task-card-meta">
+                                <span class="task-card-due">Due Apr 20</span>
+                                <span class="task-card-priority priority-medium">Medium</span>
+                            </div>
+                            <div class="task-card-assignee">
+                                <img src="../images/user-avatar.png" alt="User Avatar">
+                                <span>Michael Brown</span>
+                            </div>
+                        </div>
+                        <div class="task-card">
+                            <div class="task-card-title">Update Hawaii package pricing</div>
+                            <div class="task-card-description">Review and update pricing for all Hawaii vacation packages.</div>
+                            <div class="task-card-meta">
+                                <span class="task-card-due">Due Apr 22</span>
+                                <span class="task-card-priority priority-low">Low</span>
+                            </div>
+                            <div class="task-card-assignee">
+                                <img src="../images/user-avatar.png" alt="User Avatar">
+                                <span>Emily Davis</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- In Progress Column -->
+                    <div class="task-column">
+                        <div class="task-column-header">
+                            <div class="task-column-title">In Progress</div>
+                            <div class="task-column-count">7</div>
+                        </div>
+                        <div class="task-add-card">
+                            <i class="fas fa-plus"></i> Add task
+                        </div>
+                        <div class="task-card">
+                            <div class="task-card-title">Finalize Japan Cherry Blossom tour details</div>
+                            <div class="task-card-description">Confirm all accommodations and activities for the group tour.</div>
+                            <div class="task-card-meta">
+                                <span class="task-card-due overdue">Due Apr 10</span>
+                                <span class="task-card-priority priority-high">High</span>
+                            </div>
+                            <div class="task-card-assignee">
+                                <img src="../images/user-avatar.png" alt="User Avatar">
+                                <span>Robert Miller</span>
+                            </div>
+                        </div>
+                        <div class="task-card">
+                            <div class="task-card-title">Create social media campaign for African Safari</div>
+                            <div class="task-card-description">Design Facebook and Instagram ads for the upcoming safari packages.</div>
+                            <div class="task-card-meta">
+                                <span class="task-card-due">Due Apr 25</span>
+                                <span class="task-card-priority priority-medium">Medium</span>
+                            </div>
+                            <div class="task-card-assignee">
+                                <img src="../images/user-avatar.png" alt="User Avatar">
+                                <span>Jennifer Taylor</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Column -->
+                    <div class="task-column">
+                        <div class="task-column-header">
+                            <div class="task-column-title">Review</div>
+                            <div class="task-column-count">5</div>
+                        </div>
+                        <div class="task-add-card">
+                            <i class="fas fa-plus"></i> Add task
+                        </div>
+                        <div class="task-card">
+                            <div class="task-card-title">Review Mediterranean Cruise proposal</div>
+                            <div class="task-card-description">Check pricing, inclusions, and itinerary details before sending to client.</div>
+                            <div class="task-card-meta">
+                                <span class="task-card-due overdue">Due Apr 12</span>
+                                <span class="task-card-priority priority-high">High</span>
+                            </div>
+                            <div class="task-card-assignee">
+                                <img src="../images/user-avatar.png" alt="User Avatar">
+                                <span>David Wilson</span>
+                            </div>
+                        </div>
+                        <div class="task-card">
+                            <div class="task-card-title">Verify Australia & New Zealand visa requirements</div>
+                            <div class="task-card-description">Double-check visa requirements and processing times for clients.</div>
+                            <div class="task-card-meta">
+                                <span class="task-card-due">Due Apr 28</span>
+                                <span class="task-card-priority priority-medium">Medium</span>
+                            </div>
+                            <div class="task-card-assignee">
+                                <img src="../images/user-avatar.png" alt="User Avatar">
+                                <span>Lisa Anderson</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Completed Column -->
+                    <div class="task-column">
+                        <div class="task-column-header">
+                            <div class="task-column-title">Completed</div>
+                            <div class="task-column-count">18</div>
+                        </div>
+                        <div class="task-add-card">
+                            <i class="fas fa-plus"></i> Add task
+                        </div>
+                        <div class="task-card">
+                            <div class="task-card-title">Book Alaska Cruise for Clark family</div>
+                            <div class="task-card-description">Finalize booking and send confirmation details to clients.</div>
+                            <div class="task-card-meta">
+                                <span class="task-card-due">Completed Apr 8</span>
+                                <span class="task-card-priority priority-high">High</span>
+                            </div>
+                            <div class="task-card-assignee">
+                                <img src="../images/user-avatar.png" alt="User Avatar">
+                                <span>Thomas Clark</span>
+                            </div>
+                        </div>
+                        <div class="task-card">
+                            <div class="task-card-title">Send Bali Luxury Retreat invoice</div>
+                            <div class="task-card-description">Generate and send final invoice for the White couple's Bali trip.</div>
+                            <div class="task-card-meta">
+                                <span class="task-card-due">Completed Apr 5</span>
+                                <span class="task-card-priority priority-medium">Medium</span>
+                            </div>
+                            <div class="task-card-assignee">
+                                <img src="../images/user-avatar.png" alt="User Avatar">
+                                <span>Karen White</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('sidebar');
+            
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('collapsed');
+            });
+            
+            // Make task cards draggable
+            const taskCards = document.querySelectorAll('.task-card');
+            const taskColumns = document.querySelectorAll('.task-column');
+            
+            taskCards.forEach(card => {
+                card.setAttribute('draggable', true);
+                
+                card.addEventListener('dragstart', function(e) {
+                    e.dataTransfer.setData('text/plain', card.innerHTML);
+                    setTimeout(() => {
+                        card.classList.add('dragging');
+                    }, 0);
+                });
+                
+                card.addEventListener('dragend', function() {
+                    card.classList.remove('dragging');
+                });
+            });
+            
+            taskColumns.forEach(column => {
+                column.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                });
+                
+                column.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    const data = e.dataTransfer.getData('text/plain');
+                    const draggingCard = document.querySelector('.dragging');
+                    
+                    if (draggingCard) {
+                        draggingCard.remove();
+                    }
+                    
+                    const newCard = document.createElement('div');
+                    newCard.className = 'task-card';
+                    newCard.setAttribute('draggable', true);
+                    newCard.innerHTML = data;
+                    
+                    const addCard = column.querySelector('.task-add-card');
+                    column.insertBefore(newCard, addCard.nextSibling);
+                    
+                    // Update the count
+                    const countElement = column.querySelector('.task-column-count');
+                    const count = parseInt(countElement.textContent);
+                    countElement.textContent = count + 1;
+                    
+                    // Add event listeners to the new card
+                    newCard.addEventListener('dragstart', function(e) {
+                        e.dataTransfer.setData('text/plain', newCard.innerHTML);
+                        setTimeout(() => {
+                            newCard.classList.add('dragging');
+                        }, 0);
+                    });
+                    
+                    newCard.addEventListener('dragend', function() {
+                        newCard.classList.remove('dragging');
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

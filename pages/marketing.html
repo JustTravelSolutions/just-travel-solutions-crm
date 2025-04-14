@@ -1,0 +1,2111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Tools - Just Travel Solutions CRM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+        .marketing-container {
+            padding: 20px;
+        }
+        .marketing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .marketing-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .marketing-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+        .marketing-tab.active {
+            border-bottom-color: #f5a623;
+            color: #1a3b5d;
+            font-weight: 500;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Email Marketing Styles */
+        .email-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .email-stat-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        .email-stat-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px auto;
+        }
+        .email-stat-icon i {
+            font-size: 1.5rem;
+            color: #f5a623;
+        }
+        .email-stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a3b5d;
+            margin: 0 0 5px 0;
+        }
+        .email-stat-label {
+            color: #777;
+            margin: 0;
+        }
+        .email-campaigns {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .email-campaigns-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .email-campaigns-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0;
+        }
+        .email-campaigns-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .email-campaign-btn {
+            padding: 8px 15px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .create-campaign-btn {
+            background-color: #f5a623;
+            color: white;
+        }
+        .email-campaigns-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .email-campaigns-table th,
+        .email-campaigns-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .email-campaigns-table th {
+            font-weight: 500;
+            color: #1a3b5d;
+            background-color: #f8f9fa;
+        }
+        .email-campaigns-table tr:last-child td {
+            border-bottom: none;
+        }
+        .campaign-status {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .status-active {
+            background-color: #e6f7ee;
+            color: #28a745;
+        }
+        .status-draft {
+            background-color: #f8f9fa;
+            color: #6c757d;
+        }
+        .status-scheduled {
+            background-color: #e6f0ff;
+            color: #0d6efd;
+        }
+        .status-completed {
+            background-color: #f8f9fa;
+            color: #1a3b5d;
+        }
+        .campaign-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .campaign-action {
+            color: #1a3b5d;
+            cursor: pointer;
+        }
+        .campaign-action:hover {
+            color: #f5a623;
+        }
+        .email-lists {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .email-lists-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .email-lists-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0;
+        }
+        .email-lists-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .create-list-btn {
+            background-color: #1a3b5d;
+            color: white;
+        }
+        .email-lists-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .email-lists-table th,
+        .email-lists-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .email-lists-table th {
+            font-weight: 500;
+            color: #1a3b5d;
+            background-color: #f8f9fa;
+        }
+        .email-lists-table tr:last-child td {
+            border-bottom: none;
+        }
+        .list-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .list-action {
+            color: #1a3b5d;
+            cursor: pointer;
+        }
+        .list-action:hover {
+            color: #f5a623;
+        }
+        .email-automation {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        .automation-header {
+            margin-bottom: 20px;
+        }
+        .automation-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0 0 5px 0;
+        }
+        .automation-subtitle {
+            color: #777;
+            margin: 0;
+        }
+        .automation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .automation-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.2s ease;
+        }
+        .automation-card:hover {
+            border-color: #f5a623;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .automation-card-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .automation-card-icon i {
+            font-size: 1.5rem;
+            color: #f5a623;
+        }
+        .automation-card-title {
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0 0 10px 0;
+        }
+        .automation-card-description {
+            color: #777;
+            margin: 0 0 15px 0;
+        }
+        .automation-card-action {
+            color: #f5a623;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        .automation-card-action i {
+            margin-left: 5px;
+        }
+        
+        /* Landing Page Builder Styles */
+        .landing-pages {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .landing-pages-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .landing-pages-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0;
+        }
+        .landing-pages-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .create-page-btn {
+            background-color: #f5a623;
+            color: white;
+        }
+        .landing-pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .landing-page-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+        .landing-page-card:hover {
+            border-color: #f5a623;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .landing-page-preview {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .landing-page-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .landing-page-card:hover .landing-page-overlay {
+            opacity: 1;
+        }
+        .landing-page-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .landing-page-action {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a3b5d;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .landing-page-action:hover {
+            background-color: #f5a623;
+            color: white;
+        }
+        .landing-page-details {
+            padding: 15px;
+        }
+        .landing-page-title {
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0 0 5px 0;
+        }
+        .landing-page-stats {
+            display: flex;
+            justify-content: space-between;
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        .landing-page-stat {
+            display: flex;
+            align-items: center;
+        }
+        .landing-page-stat i {
+            margin-right: 5px;
+            color: #f5a623;
+        }
+        .landing-page-builder {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            height: 700px;
+        }
+        .builder-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .builder-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0;
+        }
+        .builder-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .builder-action-btn {
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .save-btn {
+            background-color: #f5a623;
+            color: white;
+        }
+        .preview-btn {
+            background-color: #1a3b5d;
+            color: white;
+        }
+        .publish-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .builder-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        .builder-sidebar {
+            width: 250px;
+            border-right: 1px solid #eee;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        .sidebar-section {
+            margin-bottom: 20px;
+        }
+        .sidebar-title {
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+        }
+        .sidebar-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .sidebar-item {
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            cursor: move;
+            background-color: #f8f9fa;
+            transition: background-color 0.2s ease;
+        }
+        .sidebar-item:hover {
+            background-color: #e9ecef;
+        }
+        .sidebar-item i {
+            margin-right: 8px;
+            color: #f5a623;
+        }
+        .builder-main {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .page-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 1000px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .drop-zone {
+            padding: 20px;
+            border: 2px dashed #ddd;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #777;
+        }
+        .drop-zone.active {
+            border-color: #f5a623;
+            background-color: rgba(245, 166, 35, 0.05);
+        }
+        .element-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .element-container:hover .element-actions {
+            display: flex;
+        }
+        .element-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: none;
+            gap: 5px;
+        }
+        .element-action {
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a3b5d;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .element-action:hover {
+            background-color: #f5a623;
+            color: white;
+        }
+        .header-element {
+            padding: 40px 20px;
+            background-color: #1a3b5d;
+            color: white;
+            text-align: center;
+        }
+        .header-title {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+        .header-subtitle {
+            font-size: 1.2rem;
+            margin: 0;
+            opacity: 0.8;
+        }
+        .hero-element {
+            position: relative;
+            height: 400px;
+            background-image: url('../images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            margin: 0 0 20px 0;
+        }
+        .hero-description {
+            font-size: 1.2rem;
+            margin: 0 0 30px 0;
+        }
+        .hero-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #f5a623;
+            color: white;
+            border-radius: 4px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+        .hero-button:hover {
+            background-color: #e09416;
+        }
+        .features-element {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .features-title {
+            font-size: 2rem;
+            color: #1a3b5d;
+            margin: 0 0 50px 0;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .feature-item {
+            text-align: center;
+        }
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+        }
+        .feature-icon i {
+            font-size: 2rem;
+            color: #f5a623;
+        }
+        .feature-title {
+            font-size: 1.2rem;
+            color: #1a3b5d;
+            margin: 0 0 10px 0;
+        }
+        .feature-description {
+            color: #777;
+            margin: 0;
+        }
+        .cta-element {
+            padding: 60px 20px;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        .cta-title {
+            font-size: 2rem;
+            color: #1a3b5d;
+            margin: 0 0 20px 0;
+        }
+        .cta-description {
+            font-size: 1.2rem;
+            color: #777;
+            margin: 0 0 30px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #f5a623;
+            color: white;
+            border-radius: 4px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+        .cta-button:hover {
+            background-color: #e09416;
+        }
+        .form-element {
+            padding: 60px 20px;
+        }
+        .form-title {
+            font-size: 2rem;
+            color: #1a3b5d;
+            margin: 0 0 20px 0;
+            text-align: center;
+        }
+        .form-description {
+            color: #777;
+            margin: 0 0 30px 0;
+            text-align: center;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            color: #1a3b5d;
+            font-weight: 500;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #f5a623;
+            color: white;
+            border-radius: 4px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        .form-button:hover {
+            background-color: #e09416;
+        }
+        .testimonials-element {
+            padding: 60px 20px;
+            background-color: #f8f9fa;
+        }
+        .testimonials-title {
+            font-size: 2rem;
+            color: #1a3b5d;
+            margin: 0 0 50px 0;
+            text-align: center;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .testimonial-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .testimonial-content {
+            color: #777;
+            margin: 0 0 20px 0;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-size: cover;
+            background-position: center;
+        }
+        .testimonial-info {
+            flex: 1;
+        }
+        .testimonial-name {
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0 0 5px 0;
+        }
+        .testimonial-position {
+            color: #777;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        .footer-element {
+            padding: 20px;
+            background-color: #1a3b5d;
+            color: white;
+            text-align: center;
+        }
+        .footer-text {
+            margin: 0;
+            opacity: 0.8;
+        }
+        
+        /* Ad Creation Styles */
+        .ad-campaigns {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .ad-campaigns-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ad-campaigns-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0;
+        }
+        .ad-campaigns-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .create-ad-btn {
+            background-color: #f5a623;
+            color: white;
+        }
+        .ad-campaigns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .ad-campaign-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+        .ad-campaign-card:hover {
+            border-color: #f5a623;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .ad-preview {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .ad-platform-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background-color: white;
+        }
+        .platform-facebook {
+            color: #1877f2;
+        }
+        .platform-instagram {
+            color: #c32aa3;
+        }
+        .platform-google {
+            color: #4285f4;
+        }
+        .ad-campaign-details {
+            padding: 15px;
+        }
+        .ad-campaign-title {
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0 0 5px 0;
+        }
+        .ad-campaign-dates {
+            color: #777;
+            font-size: 0.9rem;
+            margin: 0 0 10px 0;
+        }
+        .ad-campaign-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .ad-campaign-stat {
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
+        }
+        .stat-value {
+            font-weight: 700;
+            color: #1a3b5d;
+            margin: 0 0 5px 0;
+        }
+        .stat-label {
+            color: #777;
+            font-size: 0.8rem;
+            margin: 0;
+        }
+        .ad-campaign-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .ad-campaign-action {
+            color: #1a3b5d;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .ad-campaign-action i {
+            margin-right: 5px;
+        }
+        .ad-campaign-action:hover {
+            color: #f5a623;
+        }
+        .ad-performance {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        .ad-performance-header {
+            margin-bottom: 20px;
+        }
+        .ad-performance-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0 0 5px 0;
+        }
+        .ad-performance-subtitle {
+            color: #777;
+            margin: 0;
+        }
+        .ad-performance-filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .ad-performance-filter {
+            padding: 5px 15px;
+            background-color: #f8f9fa;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #1a3b5d;
+            cursor: pointer;
+        }
+        .ad-performance-filter.active {
+            background-color: #1a3b5d;
+            color: white;
+        }
+        .ad-performance-chart {
+            height: 300px;
+            margin-bottom: 30px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+        .ad-performance-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .ad-performance-metric {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a3b5d;
+            margin: 0 0 5px 0;
+        }
+        .metric-label {
+            color: #777;
+            margin: 0;
+        }
+        .ad-creator {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        .ad-creator-header {
+            margin-bottom: 20px;
+        }
+        .ad-creator-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0 0 5px 0;
+        }
+        .ad-creator-subtitle {
+            color: #777;
+            margin: 0;
+        }
+        .ad-creator-steps {
+            display: flex;
+            margin-bottom: 30px;
+        }
+        .ad-creator-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        .ad-creator-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #eee;
+            z-index: 1;
+        }
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px auto;
+            font-weight: 500;
+            color: #1a3b5d;
+            position: relative;
+            z-index: 2;
+        }
+        .ad-creator-step.active .step-number {
+            background-color: #f5a623;
+            color: white;
+        }
+        .ad-creator-step.completed .step-number {
+            background-color: #28a745;
+            color: white;
+        }
+        .step-label {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        .ad-creator-step.active .step-label {
+            color: #1a3b5d;
+            font-weight: 500;
+        }
+        .ad-creator-content {
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+        .ad-creator-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            color: #1a3b5d;
+            font-weight: 500;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+        }
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .form-check-input {
+            margin-right: 10px;
+        }
+        .form-check-label {
+            color: #1a3b5d;
+        }
+        .ad-preview-container {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+        .ad-preview-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .ad-preview-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0;
+        }
+        .ad-preview-frame {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .ad-preview-header-bar {
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        .ad-preview-platform-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #1877f2;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+        .ad-preview-platform-name {
+            font-weight: 500;
+            color: #1a3b5d;
+        }
+        .ad-preview-content {
+            padding: 15px;
+        }
+        .ad-preview-image {
+            width: 100%;
+            height: 250px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+        .ad-preview-headline {
+            font-weight: 500;
+            color: #1a3b5d;
+            margin: 0 0 10px 0;
+        }
+        .ad-preview-description {
+            color: #777;
+            margin: 0 0 15px 0;
+        }
+        .ad-preview-cta {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: #f5a623;
+            color: white;
+            border-radius: 4px;
+            font-weight: 500;
+            text-align: center;
+        }
+        .ad-creator-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .ad-creator-action-btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .back-btn {
+            background-color: #f8f9fa;
+            color: #1a3b5d;
+            border: 1px solid #ddd;
+        }
+        .next-btn {
+            background-color: #f5a623;
+            color: white;
+        }
+        
+        @media screen and (max-width: 992px) {
+            .features-grid, .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .builder-content {
+                flex-direction: column;
+            }
+            .builder-sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 15px;
+            }
+            .sidebar-items {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .sidebar-item {
+                width: calc(50% - 5px);
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .marketing-header, .email-campaigns-header, .email-lists-header, .landing-pages-header, .ad-campaigns-header, .builder-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .email-campaigns-actions, .email-lists-actions, .landing-pages-actions, .ad-campaigns-actions, .builder-actions {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+            .email-campaigns-table, .email-lists-table {
+                display: block;
+                overflow-x: auto;
+            }
+            .ad-creator-steps {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .ad-creator-step:not(:last-child)::after {
+                display: none;
+            }
+        }
+        @media screen and (max-width: 576px) {
+            .features-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-item {
+                width: 100%;
+            }
+            .ad-performance-filters {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="dashboard-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="../images/logo-white.png" alt="Just Travel Solutions CRM Logo">
+                <button id="sidebar-toggle" class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                <li><a href="clients.html"><i class="fas fa-users"></i> <span>Clients</span></a></li>
+                <li><a href="bookings.html"><i class="fas fa-plane"></i> <span>Bookings</span></a></li>
+                <li><a href="commissions.html"><i class="fas fa-dollar-sign"></i> <span>Commissions</span></a></li>
+                <li><a href="itineraries.html"><i class="fas fa-route"></i> <span>Itineraries</span></a></li>
+                <li class="active"><a href="marketing.html"><i class="fas fa-envelope"></i> <span>Marketing</span></a></li>
+                <li><a href="pipeline.html"><i class="fas fa-funnel-dollar"></i> <span>Pipeline</span></a></li>
+                <li><a href="tasks.html"><i class="fas fa-tasks"></i> <span>Tasks</span></a></li>
+                <li><a href="pricing-model.html"><i class="fas fa-calculator"></i> <span>Pricing Model</span></a></li>
+                <li><a href="time-tracker.html"><i class="fas fa-clock"></i> <span>Time Tracker</span></a></li>
+                <li><a href="affiliates.html"><i class="fas fa-handshake"></i> <span>Affiliates</span></a></li>
+                <li><a href="content-scheduler.html"><i class="fas fa-calendar"></i> <span>Content Scheduler</span></a></li>
+                <li><a href="group-bookings.html"><i class="fas fa-users-cog"></i> <span>Group Bookings</span></a></li>
+                <li><a href="reports.html"><i class="fas fa-chart-bar"></i> <span>Reports</span></a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            </ul>
+        </div>
+
+        <div class="main-content" id="main-content">
+            <div class="topbar">
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-info">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="../images/user-avatar.png" alt="User Avatar">
+                        <span>Demo User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="marketing-container">
+                <div class="marketing-header">
+                    <div>
+                        <h1>Marketing Tools</h1>
+                        <p>Create and manage your marketing campaigns, landing pages, and advertisements</p>
+                    </div>
+                </div>
+
+                <div class="marketing-tabs">
+                    <div class="marketing-tab active" data-tab="email-marketing">Email Marketing</div>
+                    <div class="marketing-tab" data-tab="landing-pages">Landing Pages</div>
+                    <div class="marketing-tab" data-tab="ad-creation">Ad Creation</div>
+                </div>
+
+                <!-- Email Marketing Tab -->
+                <div class="tab-content active" id="email-marketing">
+                    <div class="email-dashboard">
+                        <div class="email-stat-card">
+                            <div class="email-stat-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="email-stat-value">12,458</h3>
+                            <p class="email-stat-label">Total Subscribers</p>
+                        </div>
+                        <div class="email-stat-card">
+                            <div class="email-stat-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                            <h3 class="email-stat-value">87</h3>
+                            <p class="email-stat-label">Campaigns Sent</p>
+                        </div>
+                        <div class="email-stat-card">
+                            <div class="email-stat-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h3 class="email-stat-value">24.8%</h3>
+                            <p class="email-stat-label">Average Open Rate</p>
+                        </div>
+                        <div class="email-stat-card">
+                            <div class="email-stat-icon">
+                                <i class="fas fa-mouse-pointer"></i>
+                            </div>
+                            <h3 class="email-stat-value">3.2%</h3>
+                            <p class="email-stat-label">Average Click Rate</p>
+                        </div>
+                    </div>
+
+                    <div class="email-campaigns">
+                        <div class="email-campaigns-header">
+                            <h3 class="email-campaigns-title">Email Campaigns</h3>
+                            <div class="email-campaigns-actions">
+                                <button class="email-campaign-btn create-campaign-btn"><i class="fas fa-plus"></i> Create Campaign</button>
+                            </div>
+                        </div>
+                        <table class="email-campaigns-table">
+                            <thead>
+                                <tr>
+                                    <th>Campaign Name</th>
+                                    <th>Status</th>
+                                    <th>Sent</th>
+                                    <th>Open Rate</th>
+                                    <th>Click Rate</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Summer Vacation Deals</td>
+                                    <td><span class="campaign-status status-active">Active</span></td>
+                                    <td>2,456</td>
+                                    <td>28.4%</td>
+                                    <td>4.2%</td>
+                                    <td>Apr 10, 2025</td>
+                                    <td>
+                                        <div class="campaign-actions">
+                                            <div class="campaign-action"><i class="fas fa-eye"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-edit"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-copy"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>European Cruise Promotion</td>
+                                    <td><span class="campaign-status status-scheduled">Scheduled</span></td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>Apr 15, 2025</td>
+                                    <td>
+                                        <div class="campaign-actions">
+                                            <div class="campaign-action"><i class="fas fa-eye"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-edit"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-copy"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Spring Break Destinations</td>
+                                    <td><span class="campaign-status status-completed">Completed</span></td>
+                                    <td>3,128</td>
+                                    <td>32.1%</td>
+                                    <td>5.7%</td>
+                                    <td>Mar 5, 2025</td>
+                                    <td>
+                                        <div class="campaign-actions">
+                                            <div class="campaign-action"><i class="fas fa-eye"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-edit"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-copy"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Luxury Resort Collection</td>
+                                    <td><span class="campaign-status status-draft">Draft</span></td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>
+                                        <div class="campaign-actions">
+                                            <div class="campaign-action"><i class="fas fa-eye"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-edit"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-copy"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Family Vacation Ideas</td>
+                                    <td><span class="campaign-status status-completed">Completed</span></td>
+                                    <td>2,874</td>
+                                    <td>26.8%</td>
+                                    <td>3.9%</td>
+                                    <td>Feb 20, 2025</td>
+                                    <td>
+                                        <div class="campaign-actions">
+                                            <div class="campaign-action"><i class="fas fa-eye"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-edit"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-copy"></i></div>
+                                            <div class="campaign-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="email-lists">
+                        <div class="email-lists-header">
+                            <h3 class="email-lists-title">Email Lists</h3>
+                            <div class="email-lists-actions">
+                                <button class="email-campaign-btn create-list-btn"><i class="fas fa-plus"></i> Create List</button>
+                            </div>
+                        </div>
+                        <table class="email-lists-table">
+                            <thead>
+                                <tr>
+                                    <th>List Name</th>
+                                    <th>Subscribers</th>
+                                    <th>Open Rate</th>
+                                    <th>Click Rate</th>
+                                    <th>Last Updated</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>All Subscribers</td>
+                                    <td>12,458</td>
+                                    <td>24.8%</td>
+                                    <td>3.2%</td>
+                                    <td>Apr 12, 2025</td>
+                                    <td>
+                                        <div class="list-actions">
+                                            <div class="list-action"><i class="fas fa-eye"></i></div>
+                                            <div class="list-action"><i class="fas fa-edit"></i></div>
+                                            <div class="list-action"><i class="fas fa-copy"></i></div>
+                                            <div class="list-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Luxury Travelers</td>
+                                    <td>3,245</td>
+                                    <td>32.6%</td>
+                                    <td>5.8%</td>
+                                    <td>Apr 10, 2025</td>
+                                    <td>
+                                        <div class="list-actions">
+                                            <div class="list-action"><i class="fas fa-eye"></i></div>
+                                            <div class="list-action"><i class="fas fa-edit"></i></div>
+                                            <div class="list-action"><i class="fas fa-copy"></i></div>
+                                            <div class="list-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Family Vacationers</td>
+                                    <td>4,872</td>
+                                    <td>28.3%</td>
+                                    <td>4.1%</td>
+                                    <td>Apr 8, 2025</td>
+                                    <td>
+                                        <div class="list-actions">
+                                            <div class="list-action"><i class="fas fa-eye"></i></div>
+                                            <div class="list-action"><i class="fas fa-edit"></i></div>
+                                            <div class="list-action"><i class="fas fa-copy"></i></div>
+                                            <div class="list-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Adventure Seekers</td>
+                                    <td>2,156</td>
+                                    <td>35.2%</td>
+                                    <td>6.7%</td>
+                                    <td>Apr 5, 2025</td>
+                                    <td>
+                                        <div class="list-actions">
+                                            <div class="list-action"><i class="fas fa-eye"></i></div>
+                                            <div class="list-action"><i class="fas fa-edit"></i></div>
+                                            <div class="list-action"><i class="fas fa-copy"></i></div>
+                                            <div class="list-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cruise Enthusiasts</td>
+                                    <td>3,985</td>
+                                    <td>29.4%</td>
+                                    <td>4.8%</td>
+                                    <td>Apr 2, 2025</td>
+                                    <td>
+                                        <div class="list-actions">
+                                            <div class="list-action"><i class="fas fa-eye"></i></div>
+                                            <div class="list-action"><i class="fas fa-edit"></i></div>
+                                            <div class="list-action"><i class="fas fa-copy"></i></div>
+                                            <div class="list-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="email-automation">
+                        <div class="automation-header">
+                            <h3 class="automation-title">Email Automation</h3>
+                            <p class="automation-subtitle">Create automated email sequences to nurture leads and engage clients</p>
+                        </div>
+                        <div class="automation-grid">
+                            <div class="automation-card">
+                                <div class="automation-card-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <h4 class="automation-card-title">Welcome Series</h4>
+                                <p class="automation-card-description">Introduce new subscribers to your travel agency with a series of welcome emails.</p>
+                                <a href="#" class="automation-card-action">Create Sequence <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="automation-card">
+                                <div class="automation-card-icon">
+                                    <i class="fas fa-birthday-cake"></i>
+                                </div>
+                                <h4 class="automation-card-title">Birthday Offers</h4>
+                                <p class="automation-card-description">Send special travel offers to clients on their birthday.</p>
+                                <a href="#" class="automation-card-action">Create Sequence <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="automation-card">
+                                <div class="automation-card-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <h4 class="automation-card-title">Booking Follow-up</h4>
+                                <p class="automation-card-description">Follow up with clients after they book a trip to provide additional information.</p>
+                                <a href="#" class="automation-card-action">Create Sequence <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="automation-card">
+                                <div class="automation-card-icon">
+                                    <i class="fas fa-plane-departure"></i>
+                                </div>
+                                <h4 class="automation-card-title">Pre-Trip Reminders</h4>
+                                <p class="automation-card-description">Send timely reminders and tips before clients depart for their trip.</p>
+                                <a href="#" class="automation-card-action">Create Sequence <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="automation-card">
+                                <div class="automation-card-icon">
+                                    <i class="fas fa-plane-arrival"></i>
+                                </div>
+                                <h4 class="automation-card-title">Post-Trip Engagement</h4>
+                                <p class="automation-card-description">Engage with clients after their trip to gather feedback and suggest future travel.</p>
+                                <a href="#" class="automation-card-action">Create Sequence <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="automation-card">
+                                <div class="automation-card-icon">
+                                    <i class="fas fa-user-clock"></i>
+                                </div>
+                                <h4 class="automation-card-title">Re-engagement</h4>
+                                <p class="automation-card-description">Win back inactive subscribers with a targeted re-engagement campaign.</p>
+                                <a href="#" class="automation-card-action">Create Sequence <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Landing Pages Tab -->
+                <div class="tab-content" id="landing-pages">
+                    <div class="landing-pages">
+                        <div class="landing-pages-header">
+                            <h3 class="landing-pages-title">Landing Pages</h3>
+                            <div class="landing-pages-actions">
+                                <button class="email-campaign-btn create-page-btn"><i class="fas fa-plus"></i> Create Landing Page</button>
+                            </div>
+                        </div>
+                        <div class="landing-pages-grid">
+                            <div class="landing-page-card">
+                                <div class="landing-page-preview" style="background-image: url('../images/landing-page-1.jpg')">
+                                    <div class="landing-page-overlay">
+                                        <div class="landing-page-actions">
+                                            <div class="landing-page-action"><i class="fas fa-edit"></i></div>
+                                            <div class="landing-page-action"><i class="fas fa-copy"></i></div>
+                                            <div class="landing-page-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="landing-page-details">
+                                    <h4 class="landing-page-title">European Cruise Promotion</h4>
+                                    <div class="landing-page-stats">
+                                        <div class="landing-page-stat">
+                                            <i class="fas fa-eye"></i> 1,245 views
+                                        </div>
+                                        <div class="landing-page-stat">
+                                            <i class="fas fa-user-plus"></i> 87 leads
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="landing-page-card">
+                                <div class="landing-page-preview" style="background-image: url('../images/landing-page-2.jpg')">
+                                    <div class="landing-page-overlay">
+                                        <div class="landing-page-actions">
+                                            <div class="landing-page-action"><i class="fas fa-edit"></i></div>
+                                            <div class="landing-page-action"><i class="fas fa-copy"></i></div>
+                                            <div class="landing-page-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="landing-page-details">
+                                    <h4 class="landing-page-title">Luxury Bali Retreat</h4>
+                                    <div class="landing-page-stats">
+                                        <div class="landing-page-stat">
+                                            <i class="fas fa-eye"></i> 2,356 views
+                                        </div>
+                                        <div class="landing-page-stat">
+                                            <i class="fas fa-user-plus"></i> 142 leads
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="landing-page-card">
+                                <div class="landing-page-preview" style="background-image: url('../images/landing-page-3.jpg')">
+                                    <div class="landing-page-overlay">
+                                        <div class="landing-page-actions">
+                                            <div class="landing-page-action"><i class="fas fa-edit"></i></div>
+                                            <div class="landing-page-action"><i class="fas fa-copy"></i></div>
+                                            <div class="landing-page-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="landing-page-details">
+                                    <h4 class="landing-page-title">Family Safari Adventure</h4>
+                                    <div class="landing-page-stats">
+                                        <div class="landing-page-stat">
+                                            <i class="fas fa-eye"></i> 1,872 views
+                                        </div>
+                                        <div class="landing-page-stat">
+                                            <i class="fas fa-user-plus"></i> 103 leads
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="landing-page-card">
+                                <div class="landing-page-preview" style="background-image: url('../images/landing-page-4.jpg')">
+                                    <div class="landing-page-overlay">
+                                        <div class="landing-page-actions">
+                                            <div class="landing-page-action"><i class="fas fa-edit"></i></div>
+                                            <div class="landing-page-action"><i class="fas fa-copy"></i></div>
+                                            <div class="landing-page-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="landing-page-details">
+                                    <h4 class="landing-page-title">Japan Cherry Blossom Tour</h4>
+                                    <div class="landing-page-stats">
+                                        <div class="landing-page-stat">
+                                            <i class="fas fa-eye"></i> 3,124 views
+                                        </div>
+                                        <div class="landing-page-stat">
+                                            <i class="fas fa-user-plus"></i> 215 leads
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="landing-page-builder">
+                        <div class="builder-header">
+                            <h3 class="builder-title">Landing Page Builder</h3>
+                            <div class="builder-actions">
+                                <button class="builder-action-btn save-btn"><i class="fas fa-save"></i> Save</button>
+                                <button class="builder-action-btn preview-btn"><i class="fas fa-eye"></i> Preview</button>
+                                <button class="builder-action-btn publish-btn"><i class="fas fa-globe"></i> Publish</button>
+                            </div>
+                        </div>
+                        <div class="builder-content">
+                            <div class="builder-sidebar">
+                                <div class="sidebar-section">
+                                    <h4 class="sidebar-title">Basic Elements</h4>
+                                    <div class="sidebar-items">
+                                        <div class="sidebar-item"><i class="fas fa-heading"></i> Header</div>
+                                        <div class="sidebar-item"><i class="fas fa-image"></i> Hero Section</div>
+                                        <div class="sidebar-item"><i class="fas fa-th-large"></i> Features</div>
+                                        <div class="sidebar-item"><i class="fas fa-bullhorn"></i> Call to Action</div>
+                                        <div class="sidebar-item"><i class="fas fa-quote-right"></i> Testimonials</div>
+                                        <div class="sidebar-item"><i class="fas fa-envelope"></i> Contact Form</div>
+                                        <div class="sidebar-item"><i class="fas fa-footer"></i> Footer</div>
+                                    </div>
+                                </div>
+                                <div class="sidebar-section">
+                                    <h4 class="sidebar-title">Advanced Elements</h4>
+                                    <div class="sidebar-items">
+                                        <div class="sidebar-item"><i class="fas fa-images"></i> Image Gallery</div>
+                                        <div class="sidebar-item"><i class="fas fa-video"></i> Video</div>
+                                        <div class="sidebar-item"><i class="fas fa-table"></i> Pricing Table</div>
+                                        <div class="sidebar-item"><i class="fas fa-question-circle"></i> FAQ Accordion</div>
+                                        <div class="sidebar-item"><i class="fas fa-map-marker-alt"></i> Map</div>
+                                        <div class="sidebar-item"><i class="fas fa-clock"></i> Countdown Timer</div>
+                                    </div>
+                                </div>
+                                <div class="sidebar-section">
+                                    <h4 class="sidebar-title">Travel Elements</h4>
+                                    <div class="sidebar-items">
+                                        <div class="sidebar-item"><i class="fas fa-plane"></i> Flight Search</div>
+                                        <div class="sidebar-item"><i class="fas fa-hotel"></i> Hotel Showcase</div>
+                                        <div class="sidebar-item"><i class="fas fa-route"></i> Itinerary Preview</div>
+                                        <div class="sidebar-item"><i class="fas fa-calendar-alt"></i> Booking Calendar</div>
+                                        <div class="sidebar-item"><i class="fas fa-globe"></i> Destination Highlights</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="builder-main">
+                                <div class="page-container">
+                                    <div class="element-container">
+                                        <div class="header-element">
+                                            <h1 class="header-title">Discover Your Dream Vacation</h1>
+                                            <p class="header-subtitle">Exclusive deals on luxury travel packages</p>
+                                        </div>
+                                        <div class="element-actions">
+                                            <div class="element-action"><i class="fas fa-edit"></i></div>
+                                            <div class="element-action"><i class="fas fa-copy"></i></div>
+                                            <div class="element-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="element-container">
+                                        <div class="hero-element">
+                                            <div class="hero-overlay"></div>
+                                            <div class="hero-content">
+                                                <h2 class="hero-title">European Cruise Promotion</h2>
+                                                <p class="hero-description">Experience the beauty of Europe's coastlines with our exclusive cruise packages. Limited-time offer with up to 30% off!</p>
+                                                <a href="#" class="hero-button">Explore Packages</a>
+                                            </div>
+                                        </div>
+                                        <div class="element-actions">
+                                            <div class="element-action"><i class="fas fa-edit"></i></div>
+                                            <div class="element-action"><i class="fas fa-copy"></i></div>
+                                            <div class="element-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="element-container">
+                                        <div class="features-element">
+                                            <h2 class="features-title">Why Choose Our Cruise Packages</h2>
+                                            <div class="features-grid">
+                                                <div class="feature-item">
+                                                    <div class="feature-icon">
+                                                        <i class="fas fa-ship"></i>
+                                                    </div>
+                                                    <h3 class="feature-title">Luxury Ships</h3>
+                                                    <p class="feature-description">Experience the finest cruise ships with world-class amenities and service.</p>
+                                                </div>
+                                                <div class="feature-item">
+                                                    <div class="feature-icon">
+                                                        <i class="fas fa-utensils"></i>
+                                                    </div>
+                                                    <h3 class="feature-title">Gourmet Dining</h3>
+                                                    <p class="feature-description">Enjoy exquisite cuisine prepared by renowned chefs from around the world.</p>
+                                                </div>
+                                                <div class="feature-item">
+                                                    <div class="feature-icon">
+                                                        <i class="fas fa-map-marked-alt"></i>
+                                                    </div>
+                                                    <h3 class="feature-title">Exclusive Ports</h3>
+                                                    <p class="feature-description">Visit stunning destinations with guided excursions at each port of call.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="element-actions">
+                                            <div class="element-action"><i class="fas fa-edit"></i></div>
+                                            <div class="element-action"><i class="fas fa-copy"></i></div>
+                                            <div class="element-action"><i class="fas fa-trash"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="drop-zone">
+                                        Drag and drop elements here
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad Creation Tab -->
+                <div class="tab-content" id="ad-creation">
+                    <div class="ad-campaigns">
+                        <div class="ad-campaigns-header">
+                            <h3 class="ad-campaigns-title">Ad Campaigns</h3>
+                            <div class="ad-campaigns-actions">
+                                <button class="email-campaign-btn create-ad-btn"><i class="fas fa-plus"></i> Create Ad Campaign</button>
+                            </div>
+                        </div>
+                        <div class="ad-campaigns-grid">
+                            <div class="ad-campaign-card">
+                                <div class="ad-preview" style="background-image: url('../images/ad-1.jpg')">
+                                    <div class="ad-platform-badge platform-facebook">
+                                        <i class="fab fa-facebook-f"></i> Facebook
+                                    </div>
+                                </div>
+                                <div class="ad-campaign-details">
+                                    <h4 class="ad-campaign-title">Summer Beach Getaways</h4>
+                                    <p class="ad-campaign-dates">Apr 1 - Apr 30, 2025</p>
+                                    <div class="ad-campaign-stats">
+                                        <div class="ad-campaign-stat">
+                                            <div class="stat-value">12,456</div>
+                                            <div class="stat-label">Impressions</div>
+                                        </div>
+                                        <div class="ad-campaign-stat">
+                                            <div class="stat-value">3.2%</div>
+                                            <div class="stat-label">CTR</div>
+                                        </div>
+                                        <div class="ad-campaign-stat">
+                                            <div class="stat-value">$0.48</div>
+                                            <div class="stat-label">CPC</div>
+                                        </div>
+                                    </div>
+                                    <div class="ad-campaign-actions">
+                                        <div class="ad-campaign-action"><i class="fas fa-edit"></i> Edit</div>
+                                        <div class="ad-campaign-action"><i class="fas fa-chart-line"></i> Analytics</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ad-campaign-card">
+                                <div class="ad-preview" style="background-image: url('../images/ad-2.jpg')">
+                                    <div class="ad-platform-badge platform-instagram">
+                                        <i class="fab fa-instagram"></i> Instagram
+                                    </div>
+                                </div>
+                                <div class="ad-campaign-details">
+                                    <h4 class="ad-campaign-title">Luxury Bali Retreats</h4>
+                                    <p class="ad-campaign-dates">Mar 15 - Apr 15, 2025</p>
+                                    <div class="ad-campaign-stats">
+                                        <div class="ad-campaign-stat">
+                                            <div class="stat-value">24,872</div>
+                                            <div class="stat-label">Impressions</div>
+                                        </div>
+                                        <div class="ad-campaign-stat">
+                                            <div class="stat-value">4.7%</div>
+                                            <div class="stat-label">CTR</div>
+                                        </div>
+                                        <div class="ad-campaign-stat">
+                                            <div class="stat-value">$0.52</div>
+                                            <div class="stat-label">CPC</div>
+                                        </div>
+                                    </div>
+                                    <div class="ad-campaign-actions">
+                                        <div class="ad-campaign-action"><i class="fas fa-edit"></i> Edit</div>
+                                        <div class="ad-campaign-action"><i class="fas fa-chart-line"></i> Analytics</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ad-campaign-card">
+                                <div class="ad-preview" style="background-image: url('../images/ad-3.jpg')">
+                                    <div class="ad-platform-badge platform-google">
+                                        <i class="fab fa-google"></i> Google Ads
+                                    </div>
+                                </div>
+                                <div class="ad-campaign-details">
+                                    <h4 class="ad-campaign-title">European Cruise Deals</h4>
+                                    <p class="ad-campaign-dates">Apr 5 - May 5, 2025</p>
+                                    <div class="ad-campaign-stats">
+                                        <div class="ad-campaign-stat">
+                                            <div class="stat-value">18,345</div>
+                                            <div class="stat-label">Impressions</div>
+                                        </div>
+                                        <div class="ad-campaign-stat">
+                                            <div class="stat-value">2.8%</div>
+                                            <div class="stat-label">CTR</div>
+                                        </div>
+                                        <div class="ad-campaign-stat">
+                                            <div class="stat-value">$0.65</div>
+                                            <div class="stat-label">CPC</div>
+                                        </div>
+                                    </div>
+                                    <div class="ad-campaign-actions">
+                                        <div class="ad-campaign-action"><i class="fas fa-edit"></i> Edit</div>
+                                        <div class="ad-campaign-action"><i class="fas fa-chart-line"></i> Analytics</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ad-performance">
+                        <div class="ad-performance-header">
+                            <h3 class="ad-performance-title">Ad Performance</h3>
+                            <p class="ad-performance-subtitle">Track and analyze your ad campaign performance across platforms</p>
+                        </div>
+                        <div class="ad-performance-filters">
+                            <div class="ad-performance-filter active">All Platforms</div>
+                            <div class="ad-performance-filter">Facebook</div>
+                            <div class="ad-performance-filter">Instagram</div>
+                            <div class="ad-performance-filter">Google Ads</div>
+                            <div class="ad-performance-filter">Last 7 Days</div>
+                            <div class="ad-performance-filter">Last 30 Days</div>
+                            <div class="ad-performance-filter">Custom Range</div>
+                        </div>
+                        <div class="ad-performance-chart">
+                            Performance Chart (Interactive chart would be displayed here)
+                        </div>
+                        <div class="ad-performance-metrics">
+                            <div class="ad-performance-metric">
+                                <div class="metric-value">55,673</div>
+                                <div class="metric-label">Impressions</div>
+                            </div>
+                            <div class="ad-performance-metric">
+                                <div class="metric-value">1,892</div>
+                                <div class="metric-label">Clicks</div>
+                            </div>
+                            <div class="ad-performance-metric">
+                                <div class="metric-value">3.4%</div>
+                                <div class="metric-label">CTR</div>
+                            </div>
+                            <div class="ad-performance-metric">
+                                <div class="metric-value">$0.54</div>
+                                <div class="metric-label">Avg. CPC</div>
+                            </div>
+                            <div class="ad-performance-metric">
+                                <div class="metric-value">$1,021.68</div>
+                                <div class="metric-label">Total Spend</div>
+                            </div>
+                            <div class="ad-performance-metric">
+                                <div class="metric-value">142</div>
+                                <div class="metric-label">Conversions</div>
+                            </div>
+                            <div class="ad-performance-metric">
+                                <div class="metric-value">7.5%</div>
+                                <div class="metric-label">Conversion Rate</div>
+                            </div>
+                            <div class="ad-performance-metric">
+                                <div class="metric-value">$7.19</div>
+                                <div class="metric-label">Cost per Conversion</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ad-creator">
+                        <div class="ad-creator-header">
+                            <h3 class="ad-creator-title">Ad Creator</h3>
+                            <p class="ad-creator-subtitle">Create compelling ads for social media platforms</p>
+                        </div>
+                        <div class="ad-creator-steps">
+                            <div class="ad-creator-step active">
+                                <div class="step-number">1</div>
+                                <div class="step-label">Platform</div>
+                            </div>
+                            <div class="ad-creator-step">
+                                <div class="step-number">2</div>
+                                <div class="step-label">Audience</div>
+                            </div>
+                            <div class="ad-creator-step">
+                                <div class="step-number">3</div>
+                                <div class="step-label">Creative</div>
+                            </div>
+                            <div class="ad-creator-step">
+                                <div class="step-number">4</div>
+                                <div class="step-label">Budget</div>
+                            </div>
+                            <div class="ad-creator-step">
+                                <div class="step-number">5</div>
+                                <div class="step-label">Review</div>
+                            </div>
+                        </div>
+                        <div class="ad-creator-content">
+                            <div class="ad-creator-form">
+                                <div class="form-group">
+                                    <label class="form-label">Select Platform</label>
+                                    <select class="form-select">
+                                        <option>Facebook</option>
+                                        <option>Instagram</option>
+                                        <option>Google Ads</option>
+                                        <option>Twitter</option>
+                                        <option>LinkedIn</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Ad Format</label>
+                                    <select class="form-select">
+                                        <option>Single Image</option>
+                                        <option>Carousel</option>
+                                        <option>Video</option>
+                                        <option>Collection</option>
+                                        <option>Stories</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Campaign Objective</label>
+                                    <div class="form-check">
+                                        <input type="radio" class="form-check-input" name="objective" checked>
+                                        <label class="form-check-label">Brand Awareness</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" class="form-check-input" name="objective">
+                                        <label class="form-check-label">Traffic</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" class="form-check-input" name="objective">
+                                        <label class="form-check-label">Lead Generation</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" class="form-check-input" name="objective">
+                                        <label class="form-check-label">Conversions</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ad-preview-container">
+                                <div class="ad-preview-header">
+                                    <h4 class="ad-preview-title">Ad Preview</h4>
+                                </div>
+                                <div class="ad-preview-frame">
+                                    <div class="ad-preview-header-bar">
+                                        <div class="ad-preview-platform-icon">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </div>
+                                        <div class="ad-preview-platform-name">Just Travel Solutions</div>
+                                    </div>
+                                    <div class="ad-preview-content">
+                                        <div class="ad-preview-image">
+                                            Ad image will appear here
+                                        </div>
+                                        <h4 class="ad-preview-headline">Discover Your Dream Vacation</h4>
+                                        <p class="ad-preview-description">Experience luxury travel with exclusive deals on our European cruise packages. Limited-time offer!</p>
+                                        <div class="ad-preview-cta">Learn More</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ad-creator-actions">
+                            <button class="ad-creator-action-btn back-btn">Back</button>
+                            <button class="ad-creator-action-btn next-btn">Next: Define Audience</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            
+            // On mobile, start with sidebar collapsed
+            if (window.innerWidth <= 576) {
+                sidebar.classList.add('collapsed');
+                mainContent.classList.add('expanded');
+            }
+            
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+            });
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+            
+            // Marketing tabs
+            const marketingTabs = document.querySelectorAll('.marketing-tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            marketingTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    marketingTabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

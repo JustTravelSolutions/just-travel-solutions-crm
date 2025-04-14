@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Just Travel Solutions CRM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .about-section {
+            padding: 60px 0;
+        }
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .about-content h2 {
+            color: #1a3b5d;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .about-content p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .value-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        .value-card i {
+            font-size: 2rem;
+            color: #f5a623;
+            margin-bottom: 15px;
+        }
+        .value-card h3 {
+            margin-bottom: 10px;
+            color: #1a3b5d;
+        }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #f5a623;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .milestone {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .milestone::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #f5a623;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #f8f9fa;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #f8f9fa;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #f8f9fa;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #f8f9fa transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .milestone-content {
+            padding: 20px 30px;
+            background-color: #f8f9fa;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .cta-section {
+            background-color: #1a3b5d;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .cta-section h2 {
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #f5a623;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #e09612;
+        }
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .milestone {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .milestone::before {
+                left: 60px;
+                border: medium solid #f8f9fa;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent #f8f9fa transparent transparent;
+            }
+            .left::after, .right::after {
+                left: 15px;
+            }
+            .right {
+                left: 0%;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/logo.png" alt="Just Travel Solutions CRM Logo">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cta-button">
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>About Us</h1>
+                <p>The story behind Just Travel Solutions CRM</p>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <p>Just Travel Solutions CRM was created from real-world frustration. As a travel agency owner, managing JTS Vacations meant using too many systems just to keep things running smoothly.</p>
+                    
+                    <p>We juggled tools for client management, booking forms, payments, commission tracking, and emails. It worked for a while, but it wasn't sustainable. Costs piled up. Processes became messy. Nothing synced.</p>
+                    
+                    <p>In 2025, we expanded into a host agency and started bringing on agents. That growth revealed an even greater need for a system built specifically for the travel business.</p>
+                    
+                    <p>So we built our own.</p>
+                    
+                    <p>Just Travel Solutions CRM is the all-in-one platform we needed and now share with other agencies ready to streamline and grow.</p>
+
+                    <h2>Our Mission</h2>
+                    <p>To simplify travel agency operations with an all-in-one CRM that's practical, affordable, and built to scale.</p>
+
+                    <h2>Our Vision</h2>
+                    <p>To be the go-to CRM for travel professionals who want to grow smarter, not harder.</p>
+
+                    <h2>Who We Are</h2>
+                    <p>We are travel pros and problem solvers. Our founder, Shamica Davis, has been running JTS Vacations since 2014. The agency continues to curate custom group trips and immersive travel experiences.</p>
+                    
+                    <p>Our leadership team understands what it really takes to build and scale a travel business because we've lived it.</p>
+
+                    <h2>Our Core Values</h2>
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>Keep it simple and easy to use</h3>
+                            <p>We believe technology should make your life easier, not more complicated.</p>
+                        </div>
+                        <div class="value-card">
+                            <i class="fas fa-headset"></i>
+                            <h3>Provide real support, not just tech answers</h3>
+                            <p>Our support team understands the travel industry and your specific challenges.</p>
+                        </div>
+                        <div class="value-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Build with the agent in mind</h3>
+                            <p>Every feature is designed based on real travel agent workflows and needs.</p>
+                        </div>
+                        <div class="value-card">
+                            <i class="fas fa-cut"></i>
+                            <h3>Eliminate bloat and hidden costs</h3>
+                            <p>We focus on what matters and keep our pricing transparent and fair.</p>
+                        </div>
+                        <div class="value-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Help agencies grow without extra stress</h3>
+                            <p>Our platform scales with your business, from solo agent to large host agency.</p>
+                        </div>
+                    </div>
+
+                    <h2>What Makes Us Different</h2>
+                    <ul>
+                        <li>Built from the ground up by a working travel agency</li>
+                        <li>No piecing together tools or platforms</li>
+                        <li>Includes everything from bookings to client portals and commission tracking</li>
+                        <li>Designed to support solo agents and growing host agencies</li>
+                        <li>One login, one system, full control</li>
+                    </ul>
+
+                    <h2>Key Milestones</h2>
+                    <div class="timeline">
+                        <div class="milestone left">
+                            <div class="milestone-content">
+                                <h3>2014</h3>
+                                <p>JTS Vacations founded</p>
+                            </div>
+                        </div>
+                        <div class="milestone right">
+                            <div class="milestone-content">
+                                <h3>2014 to present</h3>
+                                <p>Curated thousands of trips for clients worldwide</p>
+                            </div>
+                        </div>
+                        <div class="milestone left">
+                            <div class="milestone-content">
+                                <h3>2025</h3>
+                                <p>Launched host agency model and began internal CRM development</p>
+                            </div>
+                        </div>
+                        <div class="milestone right">
+                            <div class="milestone-content">
+                                <h3>2025</h3>
+                                <p>Introduced Just Travel Solutions CRM to the travel community</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Want to manage your travel business with more confidence and fewer tools?</h2>
+                <p>Just Travel Solutions CRM was built for you.</p>
+                <a href="pricing.html" class="cta-button">View Pricing Plans</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/logo-white.png" alt="Just Travel Solutions CRM Logo">
+                    <p>The all-in-one CRM solution designed specifically for travel professionals.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Features</h3>
+                    <ul>
+                        <li><a href="commission-tracking.html">Commission Tracking</a></li>
+                        <li><a href="itinerary-builder.html">Itinerary Builder</a></li>
+                        <li><a href="marketing-tools.html">Marketing Tools</a></li>
+                        <li><a href="pipeline-task-management.html">Pipeline & Task Management</a></li>
+                        <li><a href="pricing-model.html">Pricing Model</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> info@justtravelsolutions.com</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Just Travel Solutions CRM. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

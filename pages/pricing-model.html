@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Model - Just Travel Solutions CRM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="dashboard-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="../images/logo-white.png" alt="Just Travel Solutions CRM Logo">
+                <button id="sidebar-toggle" class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                <li><a href="#"><i class="fas fa-users"></i> <span>Clients</span></a></li>
+                <li><a href="#"><i class="fas fa-plane"></i> <span>Bookings</span></a></li>
+                <li><a href="#"><i class="fas fa-dollar-sign"></i> <span>Commissions</span></a></li>
+                <li><a href="#"><i class="fas fa-route"></i> <span>Itineraries</span></a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> <span>Marketing</span></a></li>
+                <li><a href="#"><i class="fas fa-funnel-dollar"></i> <span>Pipeline</span></a></li>
+                <li><a href="#"><i class="fas fa-tasks"></i> <span>Tasks</span></a></li>
+                <li class="active"><a href="pricing-model.html"><i class="fas fa-calculator"></i> <span>Pricing Model</span></a></li>
+                <li><a href="#"><i class="fas fa-clock"></i> <span>Time Tracker</span></a></li>
+                <li><a href="#"><i class="fas fa-handshake"></i> <span>Affiliates</span></a></li>
+                <li><a href="#"><i class="fas fa-calendar"></i> <span>Content Scheduler</span></a></li>
+                <li><a href="#"><i class="fas fa-users-cog"></i> <span>Group Bookings</span></a></li>
+                <li><a href="#"><i class="fas fa-chart-bar"></i> <span>Reports</span></a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            </ul>
+        </div>
+
+        <div class="main-content" id="main-content">
+            <div class="topbar">
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-info">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="../images/user-avatar.png" alt="User Avatar">
+                        <span>Demo User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-model-container">
+                <h1>Trip Pricing Model</h1>
+                <p>Calculate optimal pricing for your trips with FOC (Free of Charge) calculations and profitability analysis</p>
+
+                <div class="pricing-model-card">
+                    <div class="pricing-model-header">
+                        <h2>Trip Details</h2>
+                        <p>Enter basic information about the trip</p>
+                    </div>
+                    <div class="pricing-model-body">
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="trip-name">Trip Name</label>
+                                    <input type="text" id="trip-name" placeholder="e.g., Bali Group Adventure" value="Bali Group Adventure">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="trip-type">Trip Type</label>
+                                    <select id="trip-type">
+                                        <option value="group">Group Tour</option>
+                                        <option value="cruise">Cruise</option>
+                                        <option value="fit">FIT (Flexible Independent Travel)</option>
+                                        <option value="custom">Custom Package</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="min-participants">Minimum Participants</label>
+                                    <input type="number" id="min-participants" value="10">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="max-participants">Maximum Participants</label>
+                                    <input type="number" id="max-participants" value="20">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="trip-duration">Duration (Days)</label>
+                                    <input type="number" id="trip-duration" value="7">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pricing-model-card">
+                    <div class="pricing-model-header">
+                        <h2>Cost Breakdown</h2>
+                        <p>Enter all costs associated with the trip</p>
+                    </div>
+                    <div class="pricing-model-body">
+                        <div class="form-group">
+                            <label>Fixed Costs (Total for Group)</label>
+                            <div id="fixed-costs">
+                                <div class="cost-item">
+                                    <div class="cost-item-name">
+                                        <input type="text" placeholder="Cost Name" value="Tour Guide">
+                                    </div>
+                                    <div class="cost-item-value">
+                                        <input type="number" placeholder="Amount" value="1200">
+                                    </div>
+                                    <div class="cost-item-delete">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                                <div class="cost-item">
+                                    <div class="cost-item-name">
+                                        <input type="text" placeholder="Cost Name" value="Transportation">
+                                    </div>
+                                    <div class="cost-item-value">
+                                        <input type="number" placeholder="Amount" value="2500">
+                                    </div>
+                                    <div class="cost-item-delete">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                                <div class="cost-item">
+                                    <div class="cost-item-name">
+                                        <input type="text" placeholder="Cost Name" value="Group Activities">
+                                    </div>
+                                    <div class="cost-item-value">
+                                        <input type="number" placeholder="Amount" value="1800">
+                                    </div>
+                                    <div class="cost-item-delete">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="add-cost-btn"><i class="fas fa-plus"></i> Add Fixed Cost</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Per Person Costs</label>
+                            <div id="per-person-costs">
+                                <div class="cost-item">
+                                    <div class="cost-item-name">
+                                        <input type="text" placeholder="Cost Name" value="Accommodation">
+                                    </div>
+                                    <div class="cost-item-value">
+                                        <input type="number" placeholder="Amount" value="1200">
+                                    </div>
+                                    <div class="cost-item-delete">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                                <div class="cost-item">
+                                    <div class="cost-item-name">
+                                        <input type="text" placeholder="Cost Name" value="Meals">
+                                    </div>
+                                    <div class="cost-item-value">
+                                        <input type="number" placeholder="Amount" value="350">
+                                    </div>
+                                    <div class="cost-item-delete">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                                <div class="cost-item">
+                                    <div class="cost-item-name">
+                                        <input type="text" placeholder="Cost Name" value="Flights">
+                                    </div>
+                                    <div class="cost-item-value">
+                                        <input type="number" placeholder="Amount" value="1500">
+                                    </div>
+                                    <div class="cost-item-delete">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                                <div class="cost-item">
+                                    <div class="cost-item-name">
+                                        <input type="text" placeholder="Cost Name" value="Insurance">
+                                    </div>
+                                    <div class="cost-item-value">
+                                        <input type="number" placeholder="Amount" value="80">
+                                    </div>
+                                    <div class="cost-item-delete">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                                <div class="cost-item">
+                                    <div class="cost-item-name">
+                                        <input type="text" placeholder="Cost Name" value="Activities">
+                                    </div>
+                                    <div class="cost-item-value">
+                                        <input type="number" placeholder="Amount" value="150">
+                                    </div>
+                                    <div class="cost-item-delete">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="add-cost-btn"><i class="fas fa-plus"></i> Add Per Person Cost</button>
+                        </div>
+
+                        <div class="foc-settings">
+                            <h3>FOC (Free of Charge) Settings</h3>
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="foc-count">Number of FOC Travelers</label>
+                                        <input type="number" id="foc-count" value="1">
+                                    </div>
+                                </div>
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="foc-ratio">FOC Ratio (1 free per X paying)</label>
+                                        <input type="number" id="foc-ratio" value="15">
+                                    </div>
+                                </div>
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="foc-distribution">FOC Cost Distribution</label>
+                                        <select id="foc-distribution">
+                                            <option value="all">Distribute across all paying travelers</option>
+                                            <option value="minimum">Only distribute if minimum reached</option>
+                                            <option value="none">Do not distribute (agency covers)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="markup-type">Markup Type</label>
+                                    <select id="markup-type">
+                                        <option value="percentage">Percentage</option>
+                                        <option value="flat">Flat Amount</option>
+                                        <option value="tiered">Tiered</option>
+                                        <option value="custom">Custom Formula</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="markup-value">Markup Value (%)</label>
+                                    <input type="number" id="markup-value" value="25">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="estimated-hours">Estimated Work Hours</label>
+                                    <input type="number" id="estimated-hours" value="40">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="calculate-btn">Calculate Optimal Price</button>
+
+                        <div class="result-section">
+                            <h3>Pricing Results</h3>
+                            <div class="result-row">
+                                <div class="result-label">Base Cost Per Person</div>
+                                <div class="result-value">$3,280</div>
+                            </div>
+                            <div class="result-row">
+                                <div class="result-label">FOC Cost Distribution</div>
+                                <div class="result-value">$164 per paying traveler</div>
+                            </div>
+                            <div class="result-row">
+                                <div class="result-label">Total Distributed Cost</div>
+                                <div class="result-value">$3,444 per person</div>
+                            </div>
+                            <div class="result-row">
+                                <div class="result-label">Markup (25%)</div>
+                                <div class="result-value">$861</div>
+                            </div>
+                            <div class="result-row">
+                                <div class="result-label">Recommended Selling Price</div>
+                                <div class="result-value">$4,305 per person</div>
+                            </div>
+                            <div class="result-row">
+                                <div class="result-label">Total Revenue (15 paying)</div>
+                                <div class="result-value">$64,575</div>
+                            </div>
+                            <div class="result-row">
+                                <div class="result-label">Total Profit</div>
+                                <div class="result-value profit">$12,915</div>
+                            </div>
+                            <div class="result-row">
+                                <div class="result-label">Profit Margin</div>
+                                <div class="result-value profit">20%</div>
+                            </div>
+                            <div class="result-row">
+                                <div class="result-label">Effective Hourly Rate</div>
+                                <div class="result-value profit">$323 per hour</div>
+                            </div>
+                            <div class="result-row">
+                                <div class="result-label">Worth Your Time?</div>
+                                <div class="result-value profit">YES</div>
+                            </div>
+                        </div>
+
+                        <div class="profitability-chart">
+                            <img src="../images/screenshots/profitability-chart.jpg" alt="Profitability Chart">
+                        </div>
+
+                        <div class="scenario-section">
+                            <h3>Scenario Analysis</h3>
+                            <div class="scenario-tabs">
+                                <div class="scenario-tab active">Minimum Group Size</div>
+                                <div class="scenario-tab">Additional FOC</div>
+                                <div class="scenario-tab">Premium Package</div>
+                            </div>
+                            <div class="scenario-content">
+                                <p>This scenario shows how your pricing and profitability would change if you only reached the minimum group size of 10 paying travelers.</p>
+                                <div class="result-row">
+                                    <div class="result-label">Fixed Cost Distribution</div>
+                                    <div class="result-value">$550 per person (vs $367 with 15 paying)</div>
+                                </div>
+                                <div class="result-row">
+                                    <div class="result-label">Recommended Selling Price</div>
+                                    <div class="result-value">$4,663 per person</div>
+                                </div>
+                                <div class="result-row">
+                                    <div class="result-label">Total Profit</div>
+                                    <div class="result-value profit">$8,330</div>
+                                </div>
+                                <div class="result-row">
+                                    <div class="result-label">Profit Margin</div>
+                                    <div class="result-value profit">17.9%</div>
+                                </div>
+                                <div class="result-row">
+                                    <div class="result-label">Effective Hourly Rate</div>
+                                    <div class="result-value profit">$208 per hour</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            
+            // On mobile, start with sidebar collapsed
+            if (window.innerWidth <= 576) {
+                sidebar.classList.add('collapsed');
+                mainContent.classList.add('expanded');
+            }
+            
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+            });
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+            
+            // Scenario tabs
+            const scenarioTabs = document.querySelectorAll('.scenario-tab');
+            scenarioTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    scenarioTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

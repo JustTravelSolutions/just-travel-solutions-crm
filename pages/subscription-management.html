@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Management - Just Travel Solutions CRM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../images/logo.png" alt="Just Travel Solutions Logo" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="features.html">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pricing.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white ms-3" href="demo.html">Request Demo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Account Dashboard Section -->
+    <section class="account-dashboard-section">
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-lg-3">
+                    <div class="account-sidebar">
+                        <div class="user-profile">
+                            <div class="user-avatar">
+                                <img src="../images/user-avatar.png" alt="User Avatar">
+                            </div>
+                            <div class="user-info">
+                                <h4>Jane Smith</h4>
+                                <p>Luxury Travel Agency</p>
+                            </div>
+                        </div>
+                        <ul class="sidebar-menu">
+                            <li><a href="account-dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                            <li class="active"><a href="subscription-management.html"><i class="fas fa-credit-card"></i> Subscription</a></li>
+                            <li><a href="account-profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                            <li><a href="account-team.html"><i class="fas fa-users"></i> Team Members</a></li>
+                            <li><a href="account-billing.html"><i class="fas fa-file-invoice-dollar"></i> Billing History</a></li>
+                            <li><a href="account-settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                            <li><a href="account-support.html"><i class="fas fa-headset"></i> Support</a></li>
+                            <li class="logout"><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="col-lg-9">
+                    <div class="account-content">
+                        <div class="content-header">
+                            <h1>Subscription Management</h1>
+                            <p>Manage your subscription plan and billing details</p>
+                        </div>
+                        
+                        <!-- Current Plan Section -->
+                        <div class="current-plan-section">
+                            <div class="section-title">
+                                <h2>Current Plan</h2>
+                            </div>
+                            <div class="current-plan-card">
+                                <div class="plan-header">
+                                    <div class="plan-name">
+                                        <h3>Professional Plan</h3>
+                                        <span class="plan-badge">Current</span>
+                                    </div>
+                                    <div class="plan-price">
+                                        <span class="price">$199</span>
+                                        <span class="period">/month</span>
+                                    </div>
+                                </div>
+                                <div class="plan-details">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="detail-item">
+                                                <span class="detail-label">Billing Cycle:</span>
+                                                <span class="detail-value">Monthly</span>
+                                            </div>
+                                            <div class="detail-item">
+                                                <span class="detail-label">Next Billing Date:</span>
+                                                <span class="detail-value">May 15, 2025</span>
+                                            </div>
+                                            <div class="detail-item">
+                                                <span class="detail-label">Payment Method:</span>
+                                                <span class="detail-value">Visa ending in 4242</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="detail-item">
+                                                <span class="detail-label">User Accounts:</span>
+                                                <span class="detail-value">5 of 5 used</span>
+                                            </div>
+                                            <div class="detail-item">
+                                                <span class="detail-label">Client Profiles:</span>
+                                                <span class="detail-value">843 of 2,000 used</span>
+                                            </div>
+                                            <div class="detail-item">
+                                                <span class="detail-label">Email Sends:</span>
+                                                <span class="detail-value">1,256 of 2,000 used</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="plan-actions">
+                                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#changePlanModal">Change Plan</button>
+                                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#changeBillingModal">Change Billing Cycle</button>
+                                    <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#cancelSubscriptionModal">Cancel Subscription</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Payment Methods Section -->
+                        <div class="payment-methods-section">
+                            <div class="section-title">
+                                <h2>Payment Methods</h2>
+                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addPaymentMethodModal">Add Payment Method</button>
+                            </div>
+                            <div class="payment-methods-list">
+                                <div class="payment-method-card active">
+                                    <div class="payment-method-icon">
+                                        <i class="fab fa-cc-visa"></i>
+                                    </div>
+                                    <div class="payment-method-details">
+                                        <h4>Visa ending in 4242</h4>
+                                        <p>Expires 09/2026</p>
+                                    </div>
+                                    <div class="payment-method-status">
+                                        <span class="status-badge">Default</span>
+                                    </div>
+                                    <div class="payment-method-actions">
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editPaymentMethodModal">Edit</button>
+                                        <button class="btn btn-sm btn-outline-danger" disabled>Remove</button>
+                                    </div>
+                                </div>
+                                <div class="payment-method-card">
+                                    <div class="payment-method-icon">
+                                        <i class="fab fa-cc-mastercard"></i>
+                                    </div>
+                                    <div class="payment-method-details">
+                                        <h4>Mastercard ending in 5678</h4>
+                                        <p>Expires 11/2025</p>
+                                    </div>
+                                    <div class="payment-method-status">
+                                        <span class="status-badge">Backup</span>
+                                    </div>
+                                    <div class="payment-method-actions">
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editPaymentMethodModal">Edit</button>
+                                        <button class="btn btn-sm btn-outline-danger">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Billing History Section -->
+                        <div class="billing-history-section">
+                            <div class="section-title">
+                                <h2>Billing History</h2>
+                                <a href="account-billing.html" class="btn btn-sm btn-outline-primary">View All</a>
+                            </div>
+                            <div class="billing-history-table">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Description</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>Invoice</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Apr 15, 2025</td>
+                                            <td>Professional Plan - Monthly</td>
+                                            <td>$199.00</td>
+                                            <td><span class="status-badge success">Paid</span></td>
+                                            <td><a href="#" class="invoice-link"><i class="fas fa-download"></i> PDF</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mar 15, 2025</td>
+                                            <td>Professional Plan - Monthly</td>
+                                            <td>$199.00</td>
+                                            <td><span class="status-badge success">Paid</span></td>
+                                            <td><a href="#" class="invoice-link"><i class="fas fa-download"></i> PDF</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Feb 15, 2025</td>
+                                            <td>Professional Plan - Monthly</td>
+                                            <td>$199.00</td>
+                                            <td><span class="status-badge success">Paid</span></td>
+                                            <td><a href="#" class="invoice-link"><i class="fas fa-download"></i> PDF</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <!-- Usage Analytics Section -->
+                        <div class="usage-analytics-section">
+                            <div class="section-title">
+                                <h2>Usage Analytics</h2>
+                            </div>
+                            <div class="usage-analytics-cards">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="usage-card">
+                                            <div class="usage-header">
+                                                <h4>User Accounts</h4>
+                                                <span class="usage-value">5/5</span>
+                                            </div>
+                                            <div class="usage-progress">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <span class="usage-percentage">100% Used</span>
+                                            </div>
+                                            <div class="usage-action">
+                                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#changePlanModal">Upgrade Plan</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="usage-card">
+                                            <div class="usage-header">
+                                                <h4>Client Profiles</h4>
+                                                <span class="usage-value">843/2,000</span>
+                                            </div>
+                                            <div class="usage-progress">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 42%" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <span class="usage-percentage">42% Used</span>
+                                            </div>
+                                            <div class="usage-action">
+                                                <button class="btn btn-sm btn-outline-secondary" disabled>Manage Clients</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="usage-card">
+                                            <div class="usage-header">
+                                                <h4>Email Sends</h4>
+                                                <span class="usage-value">1,256/2,000</span>
+                                            </div>
+                                            <div class="usage-progress">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 63%" aria-valuenow="63" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <span class="usage-percentage">63% Used</span>
+                                            </div>
+                                            <div class="usage-action">
+                                                <button class="btn btn-sm btn-outline-secondary" disabled>Manage Emails</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Change Plan Modal -->
+    <div class="modal fade" id="changePlanModal" tabindex="-1" aria-labelledby="changePlanModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changePlanModalLabel">Change Subscription Plan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="plan-selection">
+                        <div class="plan-option">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="planOption" id="starterPlan" value="starter">
+                                <label class="form-check-label" for="starterPlan">
+                                    <div class="plan-details">
+                                        <h4>Starter</h4>
+                                        <p class="plan-price">$99/month</p>
+                                        <p class="plan-description">Perfect for new travel agencies</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="plan-option active">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="planOption" id="professionalPlan" value="professional" checked>
+                                <label class="form-check-label" for="professionalPlan">
+                                    <div class="plan-details">
+                                        <h4>Professional</h4>
+                                        <p class="plan-price">$199/month</p>
+                                        <p class="plan-description">For growing travel agencies</p>
+                                        <span class="current-plan-badge">Current Plan</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="plan-option">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="planOption" id="enterprisePlan" value="enterprise">
+                                <label class="form-check-label" for="enterprisePlan">
+                                    <div class="plan-details">
+                                        <h4>Enterprise</h4>
+                                        <p class="plan-price">$399/month</p>
+                                        <p class="plan-description">For established travel agencies</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plan-change-summary">
+                        <h5>Plan Change Summary</h5>
+                        <div class="summary-details">
+                            <div class="summary-item">
+                                <span class="summary-label">Current Plan:</span>
+                                <span class="summary-value">Professional ($199/month)</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">New Plan:</span>
+                                <span class="summary-value">Professional ($199/month)</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Prorated Amount:</span>
+                                <span class="summary-value">$0.00</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Next Billing Date:</span>
+                                <span class="summary-value">May 15, 2025</span>
+                            </div>
+                        </div>
+                        <div class="summary-note">
+                            <p><i class="fas fa-info-circle"></i> When upgrading, you'll be charged a prorated amount for the remainder of your billing cycle. When downgrading, changes will take effect at the start of your next billing cycle.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" disabled>Confirm Change</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Billing Cycle Modal -->
+    <div class="modal fade" id="changeBillingModal" tabindex="-1" aria-labelledby="changeBillingModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changeBillingModalLabel">Change Billing Cycle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="billing-cycle-selection">
+                        <div class="form-check billing-option active">
+                            <input class="form-check-input" type="radio" name="billingCycle" id="monthlyBilling" value="monthly" checked>
+                            <label class="form-check-label" for="monthlyBilling">
+                                <div class="billing-details">
+                                    <h4>Monthly Billing</h4>
+                                    <p class="billing-price">$199/month</p>
+                                    <span class="current-billing-badge">Current</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="form-check billing-option">
+                            <input class="form-check-input" type="radio" name="billingCycle" id="annualBilling" value="annual">
+                            <label class="form-check-label" for="annualBilling">
+                                <div class="billing-details">
+                                    <h4>Annual Billing</h4>
+                                    <p class="billing-price">$159/month <span class="save-badge">Save 20%</span></p>
+                                    <p class="billing-total">$1,908 billed annually</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="billing-change-summary">
+                        <h5>Billing Change Summary</h5>
+                        <div class="summary-details">
+                            <div class="summary-item">
+                                <span class="summary-label">Current Billing:</span>
+                                <span class="summary-value">Monthly ($199/month)</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">New Billing:</span>
+                                <span class="summary-value">Monthly ($199/month)</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Next Billing Date:</span>
+                                <span class="summary-value">May 15, 2025</span>
+                            </div>
+                        </div>
+                        <div class="summary-note">
+                            <p><i class="fas fa-info-circle"></i> Changes to your billing cycle will take effect on your next billing date. Switching to annual billing will result in a charge for the full annual amount on that date.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" disabled>Confirm Change</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cancel Subscription Modal -->
+    <div class="modal fade" id="cancelSubscriptionModal" tabindex="-1" aria-labelledby="cancelSubscriptionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cancelSubscriptionModalLabel">Cancel Subscription</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="cancel-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h4>Are you sure you want to cancel your subscription?</h4>
+                        <p>This action will cancel your Professional Plan subscription. You will continue to have access to your account and data until the end of your current billing period on <strong>May 15, 2025</strong>.</p>
+                    </div>
+                    <div class="cancel-consequences">
+                        <h5>What happens when you cancel:</h5>
+                        <ul>
+                            <li>You'll have access to all features until May 15, 2025</li>
+                            <li>No further charges will be made to your payment method</li>
+                            <li>After May 15, 2025, your account will be downgraded to the free plan with limited features</li>
+                            <li>Your data will be retained for 30 days after downgrade</li>
+                        </ul>
+                    </div>
+                    <div class="cancel-reason">
+                        <h5>Please tell us why you're cancelling:</h5>
+                        <select class="form-select" id="cancelReason">
+                            <option value="" selected disabled>Select a reason</option>
+                            <option value="too_expensive">Too expensive</option>
+                            <option value="missing_features">Missing features I need</option>
+                            <option value="not_using">Not using it enough</option>
+                            <option value="switching">Switching to another solution</option>
+                            <option value="difficult">Too difficult to use</option>
+                            <option value="other">Other reason</option>
+                        </select>
+                        <div class="mt-3">
+                            <textarea class="form-control" id="cancelFeedback" rows="3" placeholder="Please provide additional feedback (optional)"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keep My Subscription</button>
+                    <button type="button" class="btn btn-danger" disabled>Cancel Subscription</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Payment Method Modal -->
+    <div class="modal fade" id="addPaymentMethodModal" tabindex="-1" aria-labelledby="addPaymentMethodModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addPaymentMethodModalLabel">Add Payment Method</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addPaymentForm">
+                        <div class="mb-3">
+                            <label for="cardName" class="form-label">Name on Card</label>
+                            <input type="text" class="form-control" id="cardName" placeholder="John Smith">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cardNumber" class="form-label">Card Number</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456">
+                                <span class="input-group-text">
+                                    <i class="fab fa-cc-visa"></i>
+                                    <i class="fab fa-cc-mastercard"></i>
+                                    <i class="fab fa-cc-amex"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="expiryDate" class="form-label">Expiry Date</label>
+                                <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cvv" class="form-label">CVV</label>
+                                <input type="text" class="form-control" id="cvv" placeholder="123">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="billingAddress" class="form-label">Billing Address</label>
+                            <input type="text" class="form-control mb-2" id="billingAddress" placeholder="Street Address">
+                            <input type="text" class="form-control mb-2" id="billingAddressLine2" placeholder="Apt, Suite, etc. (optional)">
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <input type="text" class="form-control" id="billingCity" placeholder="City">
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <input type="text" class="form-control" id="billingState" placeholder="State/Province">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <input type="text" class="form-control" id="billingZip" placeholder="Zip/Postal Code">
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <select class="form-select" id="billingCountry">
+                                        <option value="US" selected>United States</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="AU">Australia</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="makeDefault">
+                            <label class="form-check-label" for="makeDefault">Make this my default payment method</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Add Payment Method</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Payment Method Modal -->
+    <div class="modal fade" id="editPaymentMethodModal" tabindex="-1" aria-labelledby="editPaymentMethodModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editPaymentMethodModalLabel">Edit Payment Method</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editPaymentForm">
+                        <div class="mb-3">
+                            <label for="editCardName" class="form-label">Name on Card</label>
+                            <input type="text" class="form-control" id="editCardName" value="Jane Smith">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editCardNumber" class="form-label">Card Number</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="editCardNumber" value="**** **** **** 4242" disabled>
+                                <span class="input-group-text">
+                                    <i class="fab fa-cc-visa"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="editExpiryDate" class="form-label">Expiry Date</label>
+                                <input type="text" class="form-control" id="editExpiryDate" value="09/26">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editCvv" class="form-label">CVV</label>
+                                <input type="text" class="form-control" id="editCvv" placeholder="123">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editBillingAddress" class="form-label">Billing Address</label>
+                            <input type="text" class="form-control mb-2" id="editBillingAddress" value="1100 Peachtree Street NE">
+                            <input type="text" class="form-control mb-2" id="editBillingAddressLine2" value="Suite 250">
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <input type="text" class="form-control" id="editBillingCity" value="Atlanta">
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <input type="text" class="form-control" id="editBillingState" value="GA">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <input type="text" class="form-control" id="editBillingZip" value="30309">
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <select class="form-select" id="editBillingCountry">
+                                        <option value="US" selected>United States</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="AU">Australia</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="editMakeDefault" checked disabled>
+                            <label class="form-check-label" for="editMakeDefault">Default payment method</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="footer-about">
+                        <img src="../images/logo-white.png" alt="Just Travel Solutions Logo" class="footer-logo">
+                        <p>Just Travel Solutions provides the ultimate all-in-one CRM platform designed specifically for travel agencies.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-links">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="features.html">Features</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="demo.html">Request Demo</a></li>
+                            <li><a href="login.html">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-links">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-links">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="help-center.html">Help Center</a></li>
+                            <li><a href="documentation.html">Documentation</a></li>
+                            <li><a href="webinars.html">Webinars</a></li>
+                            <li><a href="partners.html">Partners</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-links">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="terms.html">Terms of Service</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="security.html">Security</a></li>
+                            <li><a href="gdpr.html">GDPR</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2025 Just Travel Solutions. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>1100 Peachtree Street NE, Suite 250 Atlanta, GA 30309 | <a href="mailto:hello@justtravelsolutions.com">hello@justtravelsolutions.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Change Plan Modal Functionality
+            const planOptions = document.querySelectorAll('.plan-option input');
+            const planSummaryValue = document.querySelector('.summary-item:nth-child(2) .summary-value');
+            const proratedAmount = document.querySelector('.summary-item:nth-child(3) .summary-value');
+            const confirmPlanButton = document.querySelector('#changePlanModal .modal-footer .btn-primary');
+            
+            planOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    const planName = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+                    let planPrice = '';
+                    let prorated = '';
+                    
+                    if (this.value === 'starter') {
+                        planPrice = '$99/month';
+                        prorated = '-$100.00';
+                    } else if (this.value === 'professional') {
+                        planPrice = '$199/month';
+                        prorated = '$0.00';
+                    } else if (this.value === 'enterprise') {
+                        planPrice = '$399/month';
+                        prorated = '$200.00';
+                    }
+                    
+                    planSummaryValue.textContent = `${planName} (${planPrice})`;
+                    proratedAmount.textContent = prorated;
+                    
+                    if (this.value === 'professional') {
+                        confirmPlanButton.disabled = true;
+                    } else {
+                        confirmPlanButton.disabled = false;
+                    }
+                });
+            });
+            
+            // Change Billing Cycle Modal Functionality
+            const billingOptions = document.querySelectorAll('.billing-option input');
+            const billingSummaryValue = document.querySelector('#changeBillingModal .summary-item:nth-child(2) .summary-value');
+            const confirmBillingButton = document.querySelector('#changeBillingModal .modal-footer .btn-primary');
+            
+            billingOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    if (this.value === 'monthly') {
+                        billingSummaryValue.textContent = 'Monthly ($199/month)';
+                        confirmBillingButton.disabled = true;
+                    } else if (this.value === 'annual') {
+                        billingSummaryValue.textContent = 'Annual ($159/month, billed annually)';
+                        confirmBillingButton.disabled = false;
+                    }
+                });
+            });
+            
+            // Cancel Subscription Modal Functionality
+            const cancelReasonSelect = document.getElementById('cancelReason');
+            const cancelButton = document.querySelector('#cancelSubscriptionModal .modal-footer .btn-danger');
+            
+            cancelReasonSelect.addEventListener('change', function() {
+                if (this.value) {
+                    cancelButton.disabled = false;
+                } else {
+                    cancelButton.disabled = true;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

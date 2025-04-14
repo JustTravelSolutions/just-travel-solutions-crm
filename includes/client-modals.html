@@ -1,0 +1,402 @@
+<!-- Client Add/Edit Modal -->
+<div class="modal fade" id="addClientModal" tabindex="-1" aria-labelledby="addClientModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addClientModalLabel">Add New Client</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="clientForm">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h6 class="mb-3">Basic Information</h6>
+                            <div class="mb-3">
+                                <label for="clientFirstName" class="form-label">First Name*</label>
+                                <input type="text" class="form-control" id="clientFirstName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="clientLastName" class="form-label">Last Name*</label>
+                                <input type="text" class="form-control" id="clientLastName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="clientEmail" class="form-label">Email*</label>
+                                <input type="email" class="form-control" id="clientEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="clientPhone" class="form-label">Phone*</label>
+                                <input type="tel" class="form-control" id="clientPhone" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="clientBirthdate" class="form-label">Birthdate</label>
+                                <input type="date" class="form-control" id="clientBirthdate">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="mb-3">Address</h6>
+                            <div class="mb-3">
+                                <label for="clientAddress" class="form-label">Street Address</label>
+                                <input type="text" class="form-control" id="clientAddress">
+                            </div>
+                            <div class="mb-3">
+                                <label for="clientCity" class="form-label">City</label>
+                                <input type="text" class="form-control" id="clientCity">
+                            </div>
+                            <div class="mb-3">
+                                <label for="clientState" class="form-label">State/Province</label>
+                                <input type="text" class="form-control" id="clientState">
+                            </div>
+                            <div class="mb-3">
+                                <label for="clientZip" class="form-label">Zip/Postal Code</label>
+                                <input type="text" class="form-control" id="clientZip">
+                            </div>
+                            <div class="mb-3">
+                                <label for="clientCountry" class="form-label">Country</label>
+                                <input type="text" class="form-control" id="clientCountry">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h6 class="mb-3">Passport Information</h6>
+                            <div class="mb-3">
+                                <label for="passportNumber" class="form-label">Passport Number</label>
+                                <input type="text" class="form-control" id="passportNumber">
+                            </div>
+                            <div class="mb-3">
+                                <label for="passportCountry" class="form-label">Issuing Country</label>
+                                <input type="text" class="form-control" id="passportCountry">
+                            </div>
+                            <div class="mb-3">
+                                <label for="passportIssueDate" class="form-label">Issue Date</label>
+                                <input type="date" class="form-control" id="passportIssueDate">
+                            </div>
+                            <div class="mb-3">
+                                <label for="passportExpiryDate" class="form-label">Expiry Date</label>
+                                <input type="date" class="form-control" id="passportExpiryDate">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="mb-3">Reward & VIP Tracking</h6>
+                            <div class="mb-3">
+                                <label for="totalSpend" class="form-label">Total Spend ($)</label>
+                                <input type="number" class="form-control" id="totalSpend">
+                            </div>
+                            <div class="mb-3">
+                                <label for="rewardPoints" class="form-label">Reward Points</label>
+                                <input type="number" class="form-control" id="rewardPoints">
+                            </div>
+                            <div class="mb-3">
+                                <label for="vipStatus" class="form-label">VIP Status</label>
+                                <select class="form-select" id="vipStatus">
+                                    <option value="standard">Standard</option>
+                                    <option value="silver">Silver</option>
+                                    <option value="gold">Gold</option>
+                                    <option value="platinum">Platinum</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loyaltyTier" class="form-label">Loyalty Tier</label>
+                                <select class="form-select" id="loyaltyTier">
+                                    <option value="basic">Basic</option>
+                                    <option value="preferred">Preferred</option>
+                                    <option value="elite">Elite</option>
+                                    <option value="premium">Premium</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h6 class="mb-3">Travel Preferences</h6>
+                            <div class="mb-3">
+                                <label for="preferredDestinations" class="form-label">Preferred Destinations</label>
+                                <input type="text" class="form-control" id="preferredDestinations" placeholder="e.g., Europe, Caribbean, Asia">
+                            </div>
+                            <div class="mb-3">
+                                <label for="travelStyle" class="form-label">Travel Style</label>
+                                <select class="form-select" id="travelStyle">
+                                    <option value="">Select Travel Style</option>
+                                    <option value="luxury">Luxury</option>
+                                    <option value="adventure">Adventure</option>
+                                    <option value="family">Family</option>
+                                    <option value="budget">Budget</option>
+                                    <option value="cultural">Cultural</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="dietaryRestrictions" class="form-label">Dietary Restrictions</label>
+                                <input type="text" class="form-control" id="dietaryRestrictions">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="mb-3">Relationship & Tags</h6>
+                            <div class="mb-3">
+                                <label for="relationshipConnections" class="form-label">Related Travelers</label>
+                                <select class="form-select" id="relationshipConnections" multiple>
+                                    <option value="1">Sarah Johnson (Spouse)</option>
+                                    <option value="2">Michael Smith (Friend)</option>
+                                    <option value="3">Lisa Williams (Family)</option>
+                                </select>
+                                <small class="form-text text-muted">Hold Ctrl/Cmd to select multiple</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="relationshipType" class="form-label">Add New Relationship</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Name">
+                                    <select class="form-select" style="max-width: 40%;">
+                                        <option value="spouse">Spouse</option>
+                                        <option value="child">Child</option>
+                                        <option value="parent">Parent</option>
+                                        <option value="friend">Friend</option>
+                                        <option value="family">Family</option>
+                                    </select>
+                                    <button class="btn btn-outline-secondary" type="button">Add</button>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="clientTags" class="form-label">Tags</label>
+                                <input type="text" class="form-control" id="clientTags" placeholder="e.g., cruise, family, luxury">
+                                <small class="form-text text-muted">Separate tags with commas</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <h6 class="mb-3">Additional Information</h6>
+                            <div class="mb-3">
+                                <label for="clientNotes" class="form-label">Notes</label>
+                                <textarea class="form-control" id="clientNotes" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="clientSource" class="form-label">Lead Source</label>
+                                <select class="form-select" id="clientSource">
+                                    <option value="">Select Source</option>
+                                    <option value="website">Website</option>
+                                    <option value="referral">Referral</option>
+                                    <option value="social">Social Media</option>
+                                    <option value="email">Email Campaign</option>
+                                    <option value="event">Event</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="saveClientBtn">Save Client</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View Client Modal -->
+<div class="modal fade" id="viewClientModal" tabindex="-1" aria-labelledby="viewClientModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewClientModalLabel">Client Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 text-center mb-4">
+                        <div class="client-profile-avatar">
+                            <i class="fas fa-user-circle fa-6x"></i>
+                        </div>
+                        <h4 class="mt-3">John & Sarah Johnson</h4>
+                        <p class="text-muted">Added: Jan 15, 2025</p>
+                        <div class="client-status">
+                            <span class="badge bg-success">Active</span>
+                        </div>
+                        <div class="client-tags mt-2">
+                            <span class="badge bg-info">Cruise</span>
+                            <span class="badge bg-info">Family</span>
+                        </div>
+                        <div class="client-vip mt-3">
+                            <span class="badge bg-warning text-dark">Gold VIP</span>
+                            <p class="text-muted mb-0">Reward Points: 12,450</p>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="nav nav-tabs" id="clientProfileTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="true">Info</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="travel-tab" data-bs-toggle="tab" data-bs-target="#travel" type="button" role="tab" aria-controls="travel" aria-selected="false">Travel</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="documents-tab" data-bs-toggle="tab" data-bs-target="#documents" type="button" role="tab" aria-controls="documents" aria-selected="false">Documents</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes" type="button" role="tab" aria-controls="notes" aria-selected="false">Notes</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content p-3 border border-top-0 rounded-bottom" id="clientProfileTabsContent">
+                            <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6>Contact Information</h6>
+                                        <p><strong>Email:</strong> john.johnson@example.com</p>
+                                        <p><strong>Phone:</strong> (555) 123-4567</p>
+                                        <p><strong>Address:</strong> 123 Main St, Anytown, CA 12345</p>
+                                        <p><strong>Birthdate:</strong> 05/12/1980</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6>Passport Information</h6>
+                                        <p><strong>Passport #:</strong> AB1234567</p>
+                                        <p><strong>Country:</strong> United States</p>
+                                        <p><strong>Issue Date:</strong> 01/15/2020</p>
+                                        <p><strong>Expiry Date:</strong> 01/14/2030</p>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <h6>Reward & VIP Status</h6>
+                                        <p><strong>Total Spend:</strong> $12,450</p>
+                                        <p><strong>Reward Points:</strong> 12,450</p>
+                                        <p><strong>VIP Status:</strong> Gold</p>
+                                        <p><strong>Loyalty Tier:</strong> Elite</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6>Related Travelers</h6>
+                                        <p><strong>Sarah Johnson</strong> (Spouse)</p>
+                                        <p><strong>Emma Johnson</strong> (Child)</p>
+                                        <p><strong>Michael Smith</strong> (Friend)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="travel" role="tabpanel" aria-labelledby="travel-tab">
+                                <h6>Travel Preferences</h6>
+                                <p><strong>Preferred Destinations:</strong> Europe, Caribbean</p>
+                                <p><strong>Travel Style:</strong> Family, Luxury</p>
+                                <p><strong>Dietary Restrictions:</strong> None</p>
+                                
+                                <h6 class="mt-4">Recent Bookings</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Destination</th>
+                                                <th>Status</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>May 15, 2025</td>
+                                                <td>Caribbean Cruise</td>
+                                                <td><span class="badge bg-success">Confirmed</span></td>
+                                                <td>$5,200</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Dec 10, 2024</td>
+                                                <td>Paris, France</td>
+                                                <td><span class="badge bg-success">Completed</span></td>
+                                                <td>$4,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jul 22, 2024</td>
+                                                <td>Cancun, Mexico</td>
+                                                <td><span class="badge bg-success">Completed</span></td>
+                                                <td>$2,450</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
+                                <h6>Travel Documents</h6>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-passport me-2"></i>
+                                            Passport Copy
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-download"></i></button>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-id-card me-2"></i>
+                                            Driver's License
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-download"></i></button>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-file-medical me-2"></i>
+                                            Travel Insurance
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-download"></i></button>
+                                        </div>
+                                    </li>
+                                </ul>
+                                
+                                <div class="mt-3">
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-upload me-1"></i> Upload Document
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="3" placeholder="Add a note..."></textarea>
+                                    <div class="text-end mt-2">
+                                        <button class="btn btn-primary btn-sm">Add Note</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="client-notes">
+                                    <div class="note-item p-3 border rounded mb-3">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <strong>Jane Doe</strong>
+                                                <small class="text-muted ms-2">Mar 15, 2025</small>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-sm btn-link text-danger"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                        <p class="mb-0 mt-2">Client prefers aisle seats on flights and has mentioned interest in an Alaska cruise for next summer.</p>
+                                    </div>
+                                    
+                                    <div class="note-item p-3 border rounded mb-3">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <strong>John Smith</strong>
+                                                <small class="text-muted ms-2">Feb 28, 2025</small>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-sm btn-link text-danger"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                        <p class="mb-0 mt-2">Sent anniversary card. Client mentioned they're celebrating their 15th anniversary in May and might be interested in a special trip.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editClientModal">Edit Client</button>
+            </div>
+        </div>
+    </div>
+</div>

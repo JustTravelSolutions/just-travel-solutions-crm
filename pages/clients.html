@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Travel Solutions CRM - Clients</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="icon" type="image/png" href="../images/logo-transparent.png">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="../images/logo-white.png" alt="Just Travel Solutions CRM Logo" class="sidebar-logo">
+                <button id="sidebar-toggle" class="sidebar-toggle d-md-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item">
+                    <a href="dashboard.html">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item active">
+                    <a href="clients.html">
+                        <i class="fas fa-users"></i>
+                        <span>Clients</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="bookings.html">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Bookings</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="commissions.html">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>Commissions</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="itineraries.html">
+                        <i class="fas fa-route"></i>
+                        <span>Itineraries</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="marketing.html">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Marketing</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="pipeline.html">
+                        <i class="fas fa-funnel-dollar"></i>
+                        <span>Pipeline</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="tasks.html">
+                        <i class="fas fa-tasks"></i>
+                        <span>Tasks</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="time-tracker.html">
+                        <i class="fas fa-clock"></i>
+                        <span>Time Tracker</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="affiliates.html">
+                        <i class="fas fa-handshake"></i>
+                        <span>Affiliates</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="content-scheduler.html">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Content Scheduler</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="groups.html">
+                        <i class="fas fa-users-cog"></i>
+                        <span>Groups</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="pricing-model.html">
+                        <i class="fas fa-calculator"></i>
+                        <span>Pricing Model</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="../index.html">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Exit Demo</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Topbar -->
+            <div class="topbar">
+                <div class="toggle-sidebar-btn d-md-none">
+                    <button id="toggle-sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search clients...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="topbar-right">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="../images/user-avatar.jpg" alt="User Avatar" class="avatar">
+                        <span class="user-name">Demo User <i class="fas fa-chevron-down"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clients Content -->
+            <div class="dashboard-content">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h1 class="page-title">Client Management</h1>
+                        <p class="page-subtitle">Manage your client database and relationships</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary add-client-btn" data-bs-toggle="modal" data-bs-target="#addClientModal">
+                            <i class="fas fa-plus"></i> Add New Client
+                        </button>
+                        <div class="btn-group ms-2">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                                <li><a class="dropdown-item" href="#">Export as CSV</a></li>
+                                <li><a class="dropdown-item" href="#">Export as Excel</a></li>
+                                <li><a class="dropdown-item" href="#">Export as PDF</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Filters -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="statusFilter" class="form-label">Status</label>
+                                <select class="form-select" id="statusFilter">
+                                    <option value="all" selected>All Statuses</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                    <option value="lead">Lead</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="tagFilter" class="form-label">Tags</label>
+                                <select class="form-select" id="tagFilter">
+                                    <option value="all" selected>All Tags</option>
+                                    <option value="cruise">Cruise</option>
+                                    <option value="europe">Europe</option>
+                                    <option value="family">Family</option>
+                                    <option value="luxury">Luxury</option>
+                                    <option value="honeymoon">Honeymoon</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="sourceFilter" class="form-label">Source</label>
+                                <select class="form-select" id="sourceFilter">
+                                    <option value="all" selected>All Sources</option>
+                                    <option value="website">Website</option>
+                                    <option value="referral">Referral</option>
+                                    <option value="social">Social Media</option>
+                                    <option value="email">Email Campaign</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="dateFilter" class="form-label">Date Added</label>
+                                <select class="form-select" id="dateFilter">
+                                    <option value="all" selected>All Time</option>
+                                    <option value="today">Today</option>
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                    <option value="year">This Year</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-end">
+                                <button class="btn btn-secondary" id="resetFilters">Reset Filters</button>
+                                <button class="btn btn-primary" id="applyFilters">Apply Filters</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clients Table -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="selectAllClients">
+                                                <label class="form-check-label" for="selectAllClients"></label>
+                                            </div>
+                                        </th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Tags</th>
+                                        <th>Last Booking</th>
+                                        <th>Total Spent</th>
+                                        <th>VIP Status</th>
+                                        <th>Reward Points</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-client-id="1" data-reward-points="1245">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="client1">
+                                                <label class="form-check-label" for="client1"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="client-avatar">
+                                                    <i class="fas fa-user-circle fa-2x"></i>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <h6 class="mb-0">John & Sarah Johnson</h6>
+                                                    <small class="text-muted">Added: Jan 15, 2025</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>john.johnson@example.com</td>
+                                        <td>(555) 123-4567</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td>
+                                            <span class="badge bg-info">Cruise</span>
+                                            <span class="badge bg-info">Family</span>
+                                        </td>
+                                        <td>May 15, 2025</td>
+                                        <td class="client-spend">$12,450</td>
+                                        <td><span class="badge bg-warning vip-status-badge">Gold</span></td>
+                                        <td class="client-points">1245</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownClient1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownClient1">
+                                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#viewClientModal" data-client-id="1"><i class="fas fa-eye"></i> View Profile</a></li>
+                                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editClientModal" data-client-id="1"><i class="fas fa-edit"></i> Edit</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Send Email</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-phone"></i> Call</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-calendar-plus"></i> Add Booking</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash"></i> Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-client-id="2" data-reward-points="1875">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="client2">
+                                                <label class="form-check-label" for="client2"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="client-avatar">
+                                                    <i class="fas fa-user-circle fa-2x"></i>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <h6 class="mb-0">Michael & Lisa Smith</h6>
+                                                    <small class="text-muted">Added: Feb 3, 2025</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>michael.smith@example.com</td>
+                                        <td>(555) 987-6543</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td>
+                                            <span class="badge bg-info">Europe</span>
+                                            <span class="badge bg-info">Luxury</span>
+                                        </td>
+                                        <td>June 10, 2025</td>
+                                        <td class="client-spend">$18,750</td>
+                                        <td><span class="badge bg-primary vip-status-badge">Platinum</span></td>
+                                        <td class="client-points">1875</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownClient2" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownClient2">
+                                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#viewClientModal" data-client-id="2"><i class="fas fa-eye"></i> View Profile</a></li>
+                                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editClientModal" data-client-id="2"><i class="fas fa-edit"></i> Edit</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Send Email</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-phone"></i> Call</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-calendar-plus"></i> Add Booking</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash"></i> Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-client-id="3" data-reward-points="0">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="client3">
+                                                <label class="form-check-label" for="client3"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="client-avatar">
+                                                    <i class="fas fa-user-circle fa-2x"></i>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <h6 class="mb-0">Robert & Jennifer Wilson</h6>
+                                                    <small class="text-muted">Added: Mar 12, 2025</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>robert.wilson@example.com</td>
+                                        <td>(555) 456-7890</td>
+                                        <td><span class="badge bg-warning">Lead</span></td>
+                                        <td>
+                                            <span class="badge bg-info">Honeymoon</span>
+                                        </td>
+                                        <td>N/A</td>
+                                        <td class="client-spend">$0</td>
+                                        <td><span class="badge bg-info vip-status-badge">Standard</span></td>
+                                        <td class="client-points">0</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownClient3" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownClient3">
+                                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#viewClientModal" data-client-id="3"><i class="fas fa-eye"></i> View Profile</a></li>
+                                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editClientModal" data-client-id="3"><i class="fas fa-edit"></i> Edit</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Send Email</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-phone"></i> Call</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-calendar-plus"></i> Add Booking</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash"></i> Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-client-id="4" data-reward-points="875">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="client4">
+                                                <label class="form-check-label" for="client4"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="client-avatar">
+                                                    <i class="fas fa-user-circle fa-2x"></i>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <h6 class="mb-0">David & Maria Garcia</h6>
+                                                    <small class="text-muted">Added: Dec 5, 2024</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>david.garcia@example.com</td>
+                                        <td>(555) 789-0123</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td>
+                                            <span class="badge bg-info">Family</span>
+                                            <span class="badge bg-info">Cruise</span>
+                                        </td>
+                                        <td>May 20, 2025</td>
+                                        <td class="client-spend">$8,750</td>
+                                        <td><span class="badge bg-secondary vip-status-badge">Silver</span></td>
+                                        <td class="client-points">875</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownClient4" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownClient4">
+                                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#viewClientModal" data-client-id="4"><i class="fas fa-eye"></i> View Profile</a></li>
+                                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editClientModal" data-client-id="4"><i class="fas fa-edit"></i> Edit</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Send Email</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-phone"></i> Call</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-calendar-plus"></i> Add Booking</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash"></i> Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-client-id="5" data-reward-points="420">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="client5">
+                                                <label class="form-check-label" for="client5"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="client-avatar">
+                                                    <i class="fas fa-user-circle fa-2x"></i>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <h6 class="mb-0">James & Emily Thompson</h6>
+                                                    <small class="text-muted">Added: Apr 18, 2025</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>james.thompson@example.com</td>
+                                        <td>(555) 234-5678</td>
+                                        <td><span class="badge bg-secondary">Inactive</span></td>
+                                        <td>
+                                            <span class="badge bg-info">Luxury</span>
+                                        </td>
+                                        <td>July 5, 2024</td>
+                                        <td class="client-spend">$4,200</td>
+                                        <td><span class="badge bg-info vip-status-badge">Standard</span></td>
+                                        <td class="client-points">420</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownClient5" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownClient5">
+                                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#viewClientModal" data-client-id="5"><i class="fas fa-eye"></i> View Profile</a></li>
+                                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editClientModal" data-client-id="5"><i class="fas fa-edit"></i> Edit</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Send Email</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-phone"></i> Call</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-calendar-plus"></i> Add Booking</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash"></i> Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Pagination -->
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <div>
+                                <span>Showing 1-5 of 24 clients</span>
+                            </div>
+                            <div>
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Client Modal -->
+    <div class="modal fade" id="addClientModal" tabindex="-1" aria-labelledby="addClientModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addClientModalLabel">Add New Client</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addClientForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">First Name*</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last Name*</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email*</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Phone*</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="birthdate" class="form-label">Birthdate</label>
+                                <input type="date" class="form-control birthdate-picker" id="birthdate" name="birthdate">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="clientStatus" class="form-label">Status*</label>
+                                <select class="form-select" id="clientStatus" name="clientStatus" required>
+                                    <option value="active" selected>Active</option>
+                                    <option value="inactive">Inactive</option>
+                                    <option value="lead">Lead</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Passport Details</label>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control passport-field" placeholder="Passport Number" name="passportNumber" data-field="number">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control passport-field" placeholder="Issuing Country" name="passportCountry" data-field="country">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="date" class="form-control passport-field" placeholder="Issue Date" name="passportIssueDate" data-field="issueDate">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="date" class="form-control passport-field" placeholder="Expiry Date" name="passportExpiryDate" data-field="expiryDate">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="relationship" class="form-label">Relationship to Other Travelers</label>
+                                <select class="form-select relationship-field" id="relationship" name="relationship">
+                                    <option value="">None</option>
+                                    <option value="spouse">Spouse of</option>
+                                    <option value="child">Child of</option>
+                                    <option value="parent">Parent of</option>
+                                    <option value="friend">Friend of</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3 related-traveler-container d-none">
+                                <label for="relatedTraveler" class="form-label">Related Traveler</label>
+                                <select class="form-select" id="relatedTraveler" name="relatedTraveler">
+                                    <option value="">Select a traveler</option>
+                                    <option value="client1">John Smith</option>
+                                    <option value="client2">Mary Johnson</option>
+                                    <option value="client3">Robert Brown</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" name="address">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" name="city">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="state" class="form-label">State/Province</label>
+                                <input type="text" class="form-control" id="state" name="state">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="zipCode" class="form-label">Zip/Postal Code</label>
+                                <input type="text" class="form-control" id="zipCode" name="zipCode">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="country" class="form-label">Country</label>
+                                <select class="form-select" id="country" name="country">
+                                    <option value="US" selected>United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="clientSource" class="form-label">Source</label>
+                                <select class="form-select" id="clientSource" name="clientSource">
+                                    <option value="website" selected>Website</option>
+                                    <option value="referral">Referral</option>
+                                    <option value="social">Social Media</option>
+                                    <option value="email">Email Campaign</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="vipStatus" class="form-label">VIP Status</label>
+                                <select class="form-select" id="vipStatus" name="vipStatus">
+                                    <option value="standard" selected>Standard</option>
+                                    <option value="silver">Silver</option>
+                                    <option value="gold">Gold</option>
+                                    <option value="platinum">Platinum</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="rewardPoints" class="form-label">Reward Points</label>
+                                <input type="number" class="form-control reward-field" id="rewardPoints" name="rewardPoints" value="0">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="totalSpend" class="form-label">Total Spend</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="totalSpend" name="totalSpend" value="0" step="0.01">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="clientTags" class="form-label">Tags</label>
+                            <select class="form-select" id="clientTags" name="clientTags" multiple>
+                                <option value="cruise">Cruise</option>
+                                <option value="europe">Europe</option>
+                                <option value="family">Family</option>
+                                <option value="luxury">Luxury</option>
+                                <option value="honeymoon">Honeymoon</option>
+                                <option value="adventure">Adventure</option>
+                                <option value="beach">Beach</option>
+                            </select>
+                            <small class="text-muted">Hold Ctrl/Cmd to select multiple tags</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="clientNotes" class="form-label">Notes</label>
+                            <textarea class="form-control" id="clientNotes" name="clientNotes" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary modal-submit-btn" id="saveClientBtn">Save Client</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Client Modal -->
+    <div class="modal fade" id="viewClientModal" tabindex="-1" aria-labelledby="viewClientModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewClientModalLabel">Client Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card mb-4">
+                                <div class="card-body text-center">
+                                    <div class="client-profile-avatar mb-3">
+                                        <i class="fas fa-user-circle fa-5x"></i>
+                                    </div>
+                                    <h4 class="client-name">John & Sarah Johnson</h4>
+                                    <p class="text-muted">Added: Jan 15, 2025</p>
+                                    <div class="client-status mb-3">
+                                        <span class="badge bg-success">Active</span>
+                                        <span class="badge bg-warning vip-status-badge">Gold</span>
+                                    </div>
+                                    <div class="client-contact">
+                                        <p><i class="fas fa-envelope me-2"></i> john.johnson@example.com</p>
+                                        <p><i class="fas fa-phone me-2"></i> (555) 123-4567</p>
+                                    </div>
+                                    <div class="client-actions mt-3">
+                                        <button class="btn btn-sm btn-outline-primary"><i class="fas fa-envelope"></i> Email</button>
+                                        <button class="btn btn-sm btn-outline-success"><i class="fas fa-phone"></i> Call</button>
+                                        <button class="btn btn-sm btn-outline-info"><i class="fas fa-calendar-plus"></i> Book</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Personal Information</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <h6>Birthdate</h6>
+                                        <p>June 15, 1980</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6>Passport Details</h6>
+                                        <p><strong>Number:</strong> AB1234567</p>
+                                        <p><strong>Country:</strong> United States</p>
+                                        <p><strong>Issue Date:</strong> Jan 10, 2020</p>
+                                        <p><strong>Expiry Date:</strong> Jan 9, 2030</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6>Address</h6>
+                                        <p>123 Main Street<br>
+                                        New York, NY 10001<br>
+                                        United States</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Reward & VIP Status</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="reward-status mb-3">
+                                                <h6>Reward Points</h6>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="reward-points-icon me-2">
+                                                        <i class="fas fa-award fa-2x text-warning"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h3 class="mb-0">1,245</h3>
+                                                        <small class="text-muted">Lifetime Points</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="vip-status mb-3">
+                                                <h6>VIP Status</h6>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="vip-status-icon me-2">
+                                                        <i class="fas fa-crown fa-2x text-warning"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h3 class="mb-0">Gold</h3>
+                                                        <small class="text-muted">$12,450 Total Spend</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress mt-3">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75% to Platinum</div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-2">
+                                        <small>$10,000</small>
+                                        <small>$25,000</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Recent Bookings</h5>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View All</a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Booking ID</th>
+                                                    <th>Destination</th>
+                                                    <th>Dates</th>
+                                                    <th>Value</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>BK-1234</td>
+                                                    <td>Caribbean Cruise</td>
+                                                    <td>May 15-22, 2025</td>
+                                                    <td>$5,200</td>
+                                                    <td><span class="badge bg-success">Confirmed</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>BK-1156</td>
+                                                    <td>Paris, France</td>
+                                                    <td>Mar 10-17, 2025</td>
+                                                    <td>$3,800</td>
+                                                    <td><span class="badge bg-success">Completed</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>BK-0987</td>
+                                                    <td>Hawaii Vacation</td>
+                                                    <td>Dec 5-12, 2024</td>
+                                                    <td>$4,450</td>
+                                                    <td><span class="badge bg-success">Completed</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Travel Preferences</h5>
+                                    <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <h6>Preferred Destinations</h6>
+                                                <p>Caribbean, Europe, Hawaii</p>
+                                            </div>
+                                            <div class="mb-3">
+                                                <h6>Travel Style</h6>
+                                                <p>Luxury, Family-friendly</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <h6>Accommodation Preferences</h6>
+                                                <p>4-5 Star Hotels, Ocean View</p>
+                                            </div>
+                                            <div class="mb-3">
+                                                <h6>Special Requirements</h6>
+                                                <p>Vegetarian meals, Early check-in when possible</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Notes & Communication History</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="timeline">
+                                        <div class="timeline-item">
+                                            <div class="timeline-date">Apr 5, 2025</div>
+                                            <div class="timeline-content">
+                                                <h6>Phone Call</h6>
+                                                <p>Discussed potential summer vacation options. Interested in Alaska cruise or European tour.</p>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-date">Feb 20, 2025</div>
+                                            <div class="timeline-content">
+                                                <h6>Email</h6>
+                                                <p>Sent Caribbean cruise options for May. Client requested more information on Royal Caribbean.</p>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-date">Jan 15, 2025</div>
+                                            <div class="timeline-content">
+                                                <h6>Initial Consultation</h6>
+                                                <p>New clients referred by the Smith family. Looking for family vacation options for summer 2025.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <textarea class="form-control" rows="3" placeholder="Add a note..."></textarea>
+                                        <button class="btn btn-primary mt-2">Add Note</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editClientModal">Edit Client</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Client Modal -->
+    <div class="modal fade" id="editClientModal" tabindex="-1" aria-labelledby="editClientModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editClientModalLabel">Edit Client</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editClientForm">
+                        <input type="hidden" id="editClientId" name="clientId" value="1">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editFirstName" class="form-label">First Name*</label>
+                                <input type="text" class="form-control" id="editFirstName" name="firstName" value="John" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editLastName" class="form-label">Last Name*</label>
+                                <input type="text" class="form-control" id="editLastName" name="lastName" value="Johnson" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editEmail" class="form-label">Email*</label>
+                                <input type="email" class="form-control" id="editEmail" name="email" value="john.johnson@example.com" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editPhone" class="form-label">Phone*</label>
+                                <input type="tel" class="form-control" id="editPhone" name="phone" value="(555) 123-4567" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editBirthdate" class="form-label">Birthdate</label>
+                                <input type="date" class="form-control birthdate-picker" id="editBirthdate" name="birthdate" value="1980-06-15">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editClientStatus" class="form-label">Status*</label>
+                                <select class="form-select" id="editClientStatus" name="clientStatus" required>
+                                    <option value="active" selected>Active</option>
+                                    <option value="inactive">Inactive</option>
+                                    <option value="lead">Lead</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Passport Details</label>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control passport-field" placeholder="Passport Number" name="passportNumber" data-field="number" value="AB1234567">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control passport-field" placeholder="Issuing Country" name="passportCountry" data-field="country" value="United States">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="date" class="form-control passport-field" placeholder="Issue Date" name="passportIssueDate" data-field="issueDate" value="2020-01-10">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="date" class="form-control passport-field" placeholder="Expiry Date" name="passportExpiryDate" data-field="expiryDate" value="2030-01-09">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editRelationship" class="form-label">Relationship to Other Travelers</label>
+                                <select class="form-select relationship-field" id="editRelationship" name="relationship">
+                                    <option value="">None</option>
+                                    <option value="spouse" selected>Spouse of</option>
+                                    <option value="child">Child of</option>
+                                    <option value="parent">Parent of</option>
+                                    <option value="friend">Friend of</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3 related-traveler-container">
+                                <label for="editRelatedTraveler" class="form-label">Related Traveler</label>
+                                <select class="form-select" id="editRelatedTraveler" name="relatedTraveler">
+                                    <option value="">Select a traveler</option>
+                                    <option value="client1">Sarah Johnson</option>
+                                    <option value="client2">Mary Smith</option>
+                                    <option value="client3">Robert Brown</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editAddress" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="editAddress" name="address" value="123 Main Street">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editCity" class="form-label">City</label>
+                                <input type="text" class="form-control" id="editCity" name="city" value="New York">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="editState" class="form-label">State/Province</label>
+                                <input type="text" class="form-control" id="editState" name="state" value="NY">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="editZipCode" class="form-label">Zip/Postal Code</label>
+                                <input type="text" class="form-control" id="editZipCode" name="zipCode" value="10001">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="editCountry" class="form-label">Country</label>
+                                <select class="form-select" id="editCountry" name="country">
+                                    <option value="US" selected>United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editClientSource" class="form-label">Source</label>
+                                <select class="form-select" id="editClientSource" name="clientSource">
+                                    <option value="website">Website</option>
+                                    <option value="referral" selected>Referral</option>
+                                    <option value="social">Social Media</option>
+                                    <option value="email">Email Campaign</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editVipStatus" class="form-label">VIP Status</label>
+                                <select class="form-select" id="editVipStatus" name="vipStatus">
+                                    <option value="standard">Standard</option>
+                                    <option value="silver">Silver</option>
+                                    <option value="gold" selected>Gold</option>
+                                    <option value="platinum">Platinum</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editRewardPoints" class="form-label">Reward Points</label>
+                                <input type="number" class="form-control reward-field" id="editRewardPoints" name="rewardPoints" value="1245">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editTotalSpend" class="form-label">Total Spend</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="editTotalSpend" name="totalSpend" value="12450" step="0.01">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editClientTags" class="form-label">Tags</label>
+                            <select class="form-select" id="editClientTags" name="clientTags" multiple>
+                                <option value="cruise" selected>Cruise</option>
+                                <option value="europe" selected>Europe</option>
+                                <option value="family" selected>Family</option>
+                                <option value="luxury">Luxury</option>
+                                <option value="honeymoon">Honeymoon</option>
+                                <option value="adventure">Adventure</option>
+                                <option value="beach">Beach</option>
+                            </select>
+                            <small class="text-muted">Hold Ctrl/Cmd to select multiple tags</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editClientNotes" class="form-label">Notes</label>
+                            <textarea class="form-control" id="editClientNotes" name="clientNotes" rows="3">Referred by the Smith family. Prefers ocean view rooms and early check-in when possible.</textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary modal-submit-btn" id="updateClientBtn">Update Client</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap and other scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/reward-tracking.js"></script>
+</body>
+</html>

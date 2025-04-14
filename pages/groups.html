@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groups Management - Just Travel Solutions CRM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="icon" type="image/png" href="../images/logo-transparent.png">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="../images/logo-white.png" alt="Just Travel Solutions CRM Logo" class="sidebar-logo">
+                <button id="sidebar-toggle" class="sidebar-toggle d-md-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item">
+                    <a href="dashboard.html">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="clients.html">
+                        <i class="fas fa-users"></i>
+                        <span>Clients</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="bookings.html">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Bookings</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="commissions.html">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>Commissions</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="itineraries.html">
+                        <i class="fas fa-route"></i>
+                        <span>Itineraries</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="marketing.html">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Marketing</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="pipeline.html">
+                        <i class="fas fa-funnel-dollar"></i>
+                        <span>Pipeline</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="tasks.html">
+                        <i class="fas fa-tasks"></i>
+                        <span>Tasks</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="time-tracker.html">
+                        <i class="fas fa-clock"></i>
+                        <span>Time Tracker</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="affiliates.html">
+                        <i class="fas fa-handshake"></i>
+                        <span>Affiliates</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="content-scheduler.html">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Content Scheduler</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item active">
+                    <a href="groups.html">
+                        <i class="fas fa-users-cog"></i>
+                        <span>Groups</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="pricing-model.html">
+                        <i class="fas fa-calculator"></i>
+                        <span>Pricing Model</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="../index.html">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Exit Demo</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Topbar -->
+            <div class="topbar">
+                <div class="toggle-sidebar-btn d-md-none">
+                    <button id="toggle-sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search groups...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="topbar-right">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="../images/user-avatar.jpg" alt="User Avatar" class="avatar">
+                        <span class="user-name">Demo User <i class="fas fa-chevron-down"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Groups Content -->
+            <div class="dashboard-content">
+                <div class="content-header">
+                    <h1 class="page-title">Groups Management</h1>
+                    <div class="header-actions">
+                        <button class="btn btn-primary"><i class="fas fa-plus"></i> New Group</button>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-filter"></i> Filter
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#">All Groups</a></li>
+                                <li><a class="dropdown-item" href="#">Active Groups</a></li>
+                                <li><a class="dropdown-item" href="#">Completed Groups</a></li>
+                                <li><a class="dropdown-item" href="#">Upcoming Groups</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="row stats-cards">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stats-card">
+                            <div class="stats-card-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stats-card-content">
+                                <h3>ACTIVE GROUPS</h3>
+                                <div class="stats-card-value">8</div>
+                                <div class="stats-card-change positive">
+                                    <i class="fas fa-arrow-up"></i> 2 from last month
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stats-card">
+                            <div class="stats-card-icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <div class="stats-card-content">
+                                <h3>TOTAL TRAVELERS</h3>
+                                <div class="stats-card-value">187</div>
+                                <div class="stats-card-change positive">
+                                    <i class="fas fa-arrow-up"></i> 32 from last month
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stats-card">
+                            <div class="stats-card-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="stats-card-content">
+                                <h3>REVENUE (YTD)</h3>
+                                <div class="stats-card-value">$342,500</div>
+                                <div class="stats-card-change positive">
+                                    <i class="fas fa-arrow-up"></i> 15% from last year
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stats-card">
+                            <div class="stats-card-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="stats-card-content">
+                                <h3>FOC EARNED</h3>
+                                <div class="stats-card-value">12</div>
+                                <div class="stats-card-change positive">
+                                    <i class="fas fa-arrow-up"></i> 3 from last month
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Groups Table -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h3>Active Groups</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Group Name</th>
+                                        <th>Destination</th>
+                                        <th>Travel Dates</th>
+                                        <th>Group Size</th>
+                                        <th>Group Leader</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Smith Family Reunion</td>
+                                        <td>Caribbean Cruise</td>
+                                        <td>May 15-22, 2025</td>
+                                        <td>24 / 30</td>
+                                        <td>John Smith</td>
+                                        <td><span class="badge bg-success">Confirmed</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Johnson Wedding Party</td>
+                                        <td>Cancun, Mexico</td>
+                                        <td>June 10-17, 2025</td>
+                                        <td>18 / 20</td>
+                                        <td>Sarah Johnson</td>
+                                        <td><span class="badge bg-success">Confirmed</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yoga Retreat</td>
+                                        <td>Bali, Indonesia</td>
+                                        <td>July 5-15, 2025</td>
+                                        <td>12 / 15</td>
+                                        <td>Emma Davis</td>
+                                        <td><span class="badge bg-warning">Deposits Due</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Wine Lovers Tour</td>
+                                        <td>Tuscany, Italy</td>
+                                        <td>September 8-18, 2025</td>
+                                        <td>16 / 20</td>
+                                        <td>Robert Chen</td>
+                                        <td><span class="badge bg-info">Booking</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Corporate Retreat</td>
+                                        <td>Costa Rica</td>
+                                        <td>October 12-19, 2025</td>
+                                        <td>32 / 40</td>
+                                        <td>Michael Thompson</td>
+                                        <td><span class="badge bg-primary">Planning</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group Management Tools -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Group Payment Status</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <img src="https://via.placeholder.com/500x300" alt="Group Payment Chart" class="img-fluid">
+                                </div>
+                                <div class="payment-summary mt-3">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="payment-stat">
+                                                <h4>Paid in Full</h4>
+                                                <div class="stat-value">42%</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="payment-stat">
+                                                <h4>Partial Payment</h4>
+                                                <div class="stat-value">35%</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="payment-stat">
+                                                <h4>No Payment</h4>
+                                                <div class="stat-value">23%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>FOC Calculator</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="foc-calculator">
+                                    <div class="form-group mb-3">
+                                        <label for="groupName" class="form-label">Group Name</label>
+                                        <select class="form-select" id="groupName">
+                                            <option selected>Select a group</option>
+                                            <option>Smith Family Reunion</option>
+                                            <option>Johnson Wedding Party</option>
+                                            <option>Yoga Retreat</option>
+                                            <option>Wine Lovers Tour</option>
+                                            <option>Corporate Retreat</option>
+                                        </select>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="totalTravelers" class="form-label">Total Travelers</label>
+                                                <input type="number" class="form-control" id="totalTravelers" value="24">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="focRatio" class="form-label">FOC Ratio (1 per X travelers)</label>
+                                                <input type="number" class="form-control" id="focRatio" value="10">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="perPersonCost" class="form-label">Per Person Cost ($)</label>
+                                                <input type="number" class="form-control" id="perPersonCost" value="1200">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="focType" class="form-label">FOC Type</label>
+                                                <select class="form-select" id="focType">
+                                                    <option>Full FOC</option>
+                                                    <option selected>Land Only</option>
+                                                    <option>Custom Value</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" id="calculateFoc">Calculate FOC</button>
+                                    
+                                    <div class="foc-results mt-4">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="result-card">
+                                                    <h4>FOC Earned</h4>
+                                                    <div class="result-value">2</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="result-card">
+                                                    <h4>FOC Value</h4>
+                                                    <div class="result-value">$2,400</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="result-card">
+                                                    <h4>Cost Per Traveler</h4>
+                                                    <div class="result-value">$1,300</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Groups -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3>Upcoming Groups</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Group Name</th>
+                                        <th>Destination</th>
+                                        <th>Travel Dates</th>
+                                        <th>Target Size</th>
+                                        <th>Current Size</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Photography Tour</td>
+                                        <td>Iceland</td>
+                                        <td>August 10-20, 2025</td>
+                                        <td>15</td>
+                                        <td>8</td>
+                                        <td><span class="badge bg-info">Booking</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Adventure Club</td>
+                                        <td>Peru</td>
+                                        <td>September 5-15, 2025</td>
+                                        <td>20</td>
+                                        <td>12</td>
+                                        <td><span class="badge bg-info">Booking</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Culinary Tour</td>
+                                        <td>Thailand</td>
+                                        <td>November 8-18, 2025</td>
+                                        <td>18</td>
+                                        <td>5</td>
+                                        <td><span class="badge bg-primary">Planning</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle sidebar on mobile
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const toggleSidebar = document.getElementById('toggle-sidebar');
+            const sidebar = document.getElementById('sidebar');
+            
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('collapsed');
+                });
+            }
+            
+            if (toggleSidebar) {
+                toggleSidebar.addEventListener('click', function() {
+                    sidebar.classList.toggle('collapsed');
+                });
+            }
+            
+            // FOC Calculator
+            const calculateFocBtn = document.getElementById('calculateFoc');
+            if (calculateFocBtn) {
+                calculateFocBtn.addEventListener('click', function() {
+                    // This would normally calculate based on inputs
+                    // For demo purposes, we're just showing the pre-filled results
+                    alert('FOC calculation complete! Results updated.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

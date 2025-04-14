@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Just Travel Solutions CRM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="../images/logo-transparent.png">
+    <style>
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fc;
+        }
+        
+        .login-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            overflow: hidden;
+        }
+        
+        .login-header {
+            background-color: #1a2035;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .login-logo {
+            max-width: 200px;
+            margin-bottom: 1rem;
+        }
+        
+        .login-body {
+            padding: 2rem;
+        }
+        
+        .login-form .form-control {
+            padding: 0.75rem 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-form .btn-primary {
+            padding: 0.75rem 1rem;
+            border-radius: 5px;
+            width: 100%;
+            font-weight: 600;
+        }
+        
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #6c757d;
+        }
+        
+        .login-footer a {
+            color: #4e73df;
+            text-decoration: none;
+        }
+        
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .login-image {
+            background-image: url('../images/login-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100%;
+        }
+        
+        .demo-notice {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .demo-button {
+            background-color: #28a745;
+            border-color: #28a745;
+            margin-top: 15px;
+        }
+        
+        .demo-button:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+        
+        @media (max-width: 991.98px) {
+            .login-image {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-page">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="login-card">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="login-header">
+                                    <img src="../images/logo-transparent.png" alt="Just Travel Solutions Logo" class="login-logo">
+                                    <h2>Welcome Back!</h2>
+                                    <p>Log in to access your Just Travel Solutions CRM dashboard</p>
+                                </div>
+                                <div class="login-body">
+                                    <div class="demo-notice">
+                                        <strong>Demo Mode Active</strong>
+                                        <p>For demonstration purposes, you can access the dashboard without credentials.</p>
+                                        <a href="dashboard.html" class="btn btn-success btn-lg demo-button">Enter Demo Dashboard</a>
+                                    </div>
+                                    
+                                    <form class="login-form">
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email Address</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label">Password</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                                <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                                            </div>
+                                        </div>
+                                        <div class="login-options">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                                <label class="form-check-label" for="rememberMe">
+                                                    Remember me
+                                                </label>
+                                            </div>
+                                            <a href="forgot-password.html">Forgot password?</a>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Log In</button>
+                                    </form>
+                                    <div class="login-footer">
+                                        <p>Don't have an account? <a href="pricing.html">Sign up now</a></p>
+                                        <p>By logging in, you agree to our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="login-image d-flex align-items-center justify-content-center">
+                                    <div class="login-image-overlay p-4 text-center text-white">
+                                        <h3>Transform Your Travel Agency</h3>
+                                        <p>The all-in-one CRM solution designed specifically for travel professionals</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple form validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.querySelector('.login-form');
+            
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                // For demo purposes, redirect to dashboard regardless of credentials
+                window.location.href = 'dashboard.html';
+            });
+        });
+    </script>
+</body>
+</html>

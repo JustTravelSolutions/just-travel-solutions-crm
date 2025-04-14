@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Travel Solutions CRM - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/dashboard-fixes.css">
+    <link rel="icon" type="image/png" href="../images/logo-transparent.png">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="../images/logo-white.png" alt="Just Travel Solutions CRM Logo" class="sidebar-logo">
+                <button id="sidebar-toggle" class="sidebar-toggle d-md-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item active">
+                    <a href="dashboard.html">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="clients.html">
+                        <i class="fas fa-users"></i>
+                        <span>Clients</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="bookings.html">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Bookings</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="commissions.html">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>Commissions</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="itineraries.html">
+                        <i class="fas fa-route"></i>
+                        <span>Itineraries</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="marketing.html">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Marketing</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="pipeline.html">
+                        <i class="fas fa-funnel-dollar"></i>
+                        <span>Pipeline</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="tasks.html">
+                        <i class="fas fa-tasks"></i>
+                        <span>Tasks</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="time-tracker.html">
+                        <i class="fas fa-clock"></i>
+                        <span>Time Tracker</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="affiliates.html">
+                        <i class="fas fa-handshake"></i>
+                        <span>Affiliates</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="content-scheduler.html">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Content Scheduler</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="groups.html">
+                        <i class="fas fa-users-cog"></i>
+                        <span>Groups</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="pricing-model.html">
+                        <i class="fas fa-calculator"></i>
+                        <span>Pricing Model</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="../index.html">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Exit Demo</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Topbar -->
+            <div class="topbar">
+                <div class="toggle-sidebar-btn d-md-none">
+                    <button id="toggle-sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="topbar-right">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="../images/user-avatar.jpg" alt="User Avatar" class="avatar">
+                        <span class="user-name">Demo User <i class="fas fa-chevron-down"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <h1 class="page-title">Your Dashboard</h1>
+                <p class="page-subtitle">Welcome to your travel agency today</p>
+
+                <!-- Stats Cards -->
+                <div class="row stats-cards">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stats-card">
+                            <div class="stats-card-icon">
+                                <i class="fas fa-calendar-day"></i>
+                            </div>
+                            <div class="stats-card-content">
+                                <h3>BOOKINGS (MONTHLY)</h3>
+                                <div class="stats-card-value">42</div>
+                                <div class="stats-card-change positive">
+                                    <i class="fas fa-arrow-up"></i> 12% from last month
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stats-card">
+                            <div class="stats-card-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="stats-card-content">
+                                <h3>REVENUE (MONTHLY)</h3>
+                                <div class="stats-card-value">$215,000</div>
+                                <div class="stats-card-change positive">
+                                    <i class="fas fa-arrow-up"></i> 8% from last month
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stats-card">
+                            <div class="stats-card-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                            <div class="stats-card-content">
+                                <h3>COMMISSIONS (PENDING)</h3>
+                                <div class="stats-card-value">$24,500</div>
+                                <div class="stats-card-change negative">
+                                    <i class="fas fa-arrow-down"></i> 3% from last month
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stats-card">
+                            <div class="stats-card-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stats-card-content">
+                                <h3>ACTIVE CLIENTS</h3>
+                                <div class="stats-card-value">156</div>
+                                <div class="stats-card-change positive">
+                                    <i class="fas fa-arrow-up"></i> 5% from last month
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="row charts-row">
+                    <div class="col-lg-8">
+                        <div class="chart-card">
+                            <div class="chart-card-header">
+                                <h3>Revenue & Bookings</h3>
+                                <div class="chart-actions">
+                                    <button class="btn btn-sm btn-outline-secondary">Monthly</button>
+                                    <button class="btn btn-sm btn-outline-secondary active">Quarterly</button>
+                                    <button class="btn btn-sm btn-outline-secondary">Yearly</button>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" href="#">Export as PDF</a></li>
+                                            <li><a class="dropdown-item" href="#">Export as CSV</a></li>
+                                            <li><a class="dropdown-item" href="#">Print Chart</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-card-body">
+                                <img src="../images/screenshots/revenue-chart.jpg" alt="Revenue & Bookings Chart" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="chart-card">
+                            <div class="chart-card-header">
+                                <h3>Booking Sources</h3>
+                                <div class="chart-actions">
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                            <li><a class="dropdown-item" href="#">Export as PDF</a></li>
+                                            <li><a class="dropdown-item" href="#">Export as CSV</a></li>
+                                            <li><a class="dropdown-item" href="#">Print Chart</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-card-body">
+                                <img src="../images/screenshots/booking-sources.jpg" alt="Booking Sources" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity & Tasks Row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card recent-activity-card">
+                            <div class="card-header">
+                                <h3>Recent Activity</h3>
+                                <a href="#" class="view-all">View All</a>
+                            </div>
+                            <div class="card-body">
+                                <ul class="activity-list">
+                                    <li class="activity-item">
+                                        <div class="activity-icon booking">
+                                            <i class="fas fa-calendar-check"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h4>New Booking Created</h4>
+                                            <p>Caribbean Cruise for Johnson Family</p>
+                                            <span class="activity-time">2 hours ago</span>
+                                        </div>
+                                    </li>
+                                    <li class="activity-item">
+                                        <div class="activity-icon commission">
+                                            <i class="fas fa-dollar-sign"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h4>Commission Received</h4>
+                                            <p>$1,250 from Royal Caribbean</p>
+                                            <span class="activity-time">5 hours ago</span>
+                                        </div>
+                                    </li>
+                                    <li class="activity-item">
+                                        <div class="activity-icon client">
+                                            <i class="fas fa-user-plus"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h4>New Client Added</h4>
+                                            <p>Michael Thompson</p>
+                                            <span class="activity-time">Yesterday</span>
+                                        </div>
+                                    </li>
+                                    <li class="activity-item">
+                                        <div class="activity-icon itinerary">
+                                            <i class="fas fa-route"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h4>Itinerary Updated</h4>
+                                            <p>European Tour for Smith Family</p>
+                                            <span class="activity-time">Yesterday</span>
+                                        </div>
+                                    </li>
+                                    <li class="activity-item">
+                                        <div class="activity-icon email">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h4>Email Campaign Sent</h4>
+                                            <p>Summer Vacation Deals</p>
+                                            <span class="activity-time">2 days ago</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card tasks-card">
+                            <div class="card-header">
+                                <h3>Upcoming Tasks</h3>
+                                <a href="tasks.html" class="view-all">View All</a>
+                            </div>
+                            <div class="card-body">
+                                <ul class="tasks-list">
+                                    <li class="task-item">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="task1">
+                                            <label class="form-check-label" for="task1">
+                                                Follow up with Smith family about Italy itinerary
+                                            </label>
+                                        </div>
+                                        <div class="task-meta">
+                                            <span class="task-priority high">High</span>
+                                            <span class="task-due">Today</span>
+                                        </div>
+                                    </li>
+                                    <li class="task-item">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="task2">
+                                            <label class="form-check-label" for="task2">
+                                                Send invoice to Johnson family
+                                            </label>
+                                        </div>
+                                        <div class="task-meta">
+                                            <span class="task-priority medium">Medium</span>
+                                            <span class="task-due">Today</span>
+                                        </div>
+                                    </li>
+                                    <li class="task-item">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="task3">
+                                            <label class="form-check-label" for="task3">
+                                                Call Royal Caribbean about group booking
+                                            </label>
+                                        </div>
+                                        <div class="task-meta">
+                                            <span class="task-priority high">High</span>
+                                            <span class="task-due">Tomorrow</span>
+                                        </div>
+                                    </li>
+                                    <li class="task-item">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="task4">
+                                            <label class="form-check-label" for="task4">
+                                                Create email campaign for fall promotions
+                                            </label>
+                                        </div>
+                                        <div class="task-meta">
+                                            <span class="task-priority medium">Medium</span>
+                                            <span class="task-due">This Week</span>
+                                        </div>
+                                    </li>
+                                    <li class="task-item">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="task5">
+                                            <label class="form-check-label" for="task5">
+                                                Update website with new cruise packages
+                                            </label>
+                                        </div>
+                                        <div class="task-meta">
+                                            <span class="task-priority low">Low</span>
+                                            <span class="task-due">This Week</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <button class="btn btn-primary btn-sm mt-3">
+                                    <i class="fas fa-plus"></i> Add New Task
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Bookings Table -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card recent-bookings-card">
+                            <div class="card-header">
+                                <h3>Recent Bookings</h3>
+                                <a href="bookings.html" class="view-all">View All</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Booking ID</th>
+                                                <th>Client</th>
+                                                <th>Destination</th>
+                                                <th>Departure</th>
+                                                <th>Return</th>
+                                                <th>Value</th>
+                                                <th>Commission</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>BK-2025-1042</td>
+                                                <td>Johnson Family</td>
+                                                <td>Caribbean Cruise</td>
+                                                <td>May 15, 2025</td>
+                                                <td>May 22, 2025</td>
+                                                <td>$5,800</td>
+                                                <td>$870</td>
+                                                <td><span class="badge bg-success">Confirmed</span></td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                                            <li><a class="dropdown-item" href="#">View Details</a></li>
+                                                            <li><a class="dropdown-item" href="#">Edit Booking</a></li>
+                                                            <li><a class="dropdown-item" href="#">Send Itinerary</a></li>
+                                                            <li><a class="dropdown-item" href="#">Cancel Booking</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>BK-2025-1041</td>
+                                                <td>Smith Family</td>
+                                                <td>European Tour</td>
+                                                <td>June 10, 2025</td>
+                                                <td>June 24, 2025</td>
+                                                <td>$12,500</td>
+                                                <td>$1,875</td>
+                                                <td><span class="badge bg-warning">Pending</span></td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                                                            <li><a class="dropdown-item" href="#">View Details</a></li>
+                                                            <li><a class="dropdown-item" href="#">Edit Booking</a></li>
+                                                            <li><a class="dropdown-item" href="#">Send Itinerary</a></li>
+                                                            <li><a class="dropdown-item" href="#">Cancel Booking</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>BK-2025-1040</td>
+                                                <td>Michael Thompson</td>
+                                                <td>Hawaii Vacation</td>
+                                                <td>July 5, 2025</td>
+                                                <td>July 12, 2025</td>
+                                                <td>$4,200</td>
+                                                <td>$630</td>
+                                                <td><span class="badge bg-info">Deposit Paid</span></td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
+                                                            <li><a class="dropdown-item" href="#">View Details</a></li>
+                                                            <li><a class="dropdown-item" href="#">Edit Booking</a></li>
+                                                            <li><a class="dropdown-item" href="#">Send Itinerary</a></li>
+                                                            <li><a class="dropdown-item" href="#">Cancel Booking</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>BK-2025-1039</td>
+                                                <td>Garcia Group</td>
+                                                <td>Mexico Resort</td>
+                                                <td>May 20, 2025</td>
+                                                <td>May 27, 2025</td>
+                                                <td>$8,750</td>
+                                                <td>$1,312</td>
+                                                <td><span class="badge bg-success">Confirmed</span></td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton6" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton6">
+                                                            <li><a class="dropdown-item" href="#">View Details</a></li>
+                                                            <li><a class="dropdown-item" href="#">Edit Booking</a></li>
+                                                            <li><a class="dropdown-item" href="#">Send Itinerary</a></li>
+                                                            <li><a class="dropdown-item" href="#">Cancel Booking</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>BK-2025-1038</td>
+                                                <td>Wilson Couple</td>
+                                                <td>Bali Honeymoon</td>
+                                                <td>June 15, 2025</td>
+                                                <td>June 25, 2025</td>
+                                                <td>$6,800</td>
+                                                <td>$1,020</td>
+                                                <td><span class="badge bg-warning">Pending</span></td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton7" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
+                                                            <li><a class="dropdown-item" href="#">View Details</a></li>
+                                                            <li><a class="dropdown-item" href="#">Edit Booking</a></li>
+                                                            <li><a class="dropdown-item" href="#">Send Itinerary</a></li>
+                                                            <li><a class="dropdown-item" href="#">Cancel Booking</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sidebar toggle for mobile
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('sidebar');
+            
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('collapsed');
+                });
+            }
+            
+            // Toggle sidebar from main content area (mobile)
+            const toggleSidebarBtn = document.getElementById('toggle-sidebar');
+            
+            if (toggleSidebarBtn) {
+                toggleSidebarBtn.addEventListener('click', function() {
+                    sidebar.classList.toggle('collapsed');
+                });
+            }
+            
+            // Collapse sidebar by default on mobile
+            function checkWidth() {
+                if (window.innerWidth < 768) {
+                    sidebar.classList.add('collapsed');
+                } else {
+                    sidebar.classList.remove('collapsed');
+                }
+            }
+            
+            // Check on load
+            checkWidth();
+            
+            // Check on resize
+            window.addEventListener('resize', checkWidth);
+        });
+    </script>
+</body>
+</html>
